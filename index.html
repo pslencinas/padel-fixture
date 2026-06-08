@@ -101,7 +101,7 @@ body{font-family:-apple-system,sans-serif;background:#F0F4F8;color:#1A2733;min-h
 
 <div class="hdr">
   <h1>🎾 Fixture Pádel</h1>
-  <p>Sábado 9:30 – 11:30 · 2 canchas · 10 chicas · 30 min/partido</p>
+  <p>2 canchas · 10 chicas · 5 rondas · 4 partidos c/u</p>
 </div>
 <div class="tabs">
   <button class="tab on" id="t-fix" onclick="showTab('fixture')">Fixture</button>
@@ -118,10 +118,11 @@ var PLAYERS=["Caro","Maru","Vale","Ani","Flor","Jime","Ceci","Dani","Maga","Ale"
 var POS={Caro:"Drive",Maru:"Drive/Revés",Vale:"Revés",Ani:"Revés",Flor:"Revés/Drive",Jime:"Revés",Ceci:"Revés",Dani:"Drive",Maga:"Drive",Ale:"Drive"};
 
 var ROUNDS=[
-  {time:"9:30 – 10:00", c1a:["Ale","Flor"],  c1b:["Caro","Dani"], c2a:["Ceci","Vale"], c2b:["Jime","Maga"], r1:"Maru", r2:"Ani"},
-  {time:"10:00 – 10:30",c1a:["Ceci","Ale"],  c1b:["Caro","Flor"], c2a:["Maga","Maru"], c2b:["Ani","Dani"],  r1:"Vale", r2:"Jime"},
-  {time:"10:30 – 11:00",c1a:["Maga","Flor"], c1b:["Jime","Vale"], c2a:["Caro","Ale"],  c2b:["Maru","Ani"],  r1:"Ceci", r2:"Dani"},
-  {time:"11:00 – 11:30",c1a:["Dani","Vale"],  c1b:["Flor","Ceci"], c2a:["Jime","Maru"], c2b:["Caro","Ani"],  r1:"Maga", r2:"Ale"}
+  {c1a:["Dani","Flor"],c1b:["Maga","Vale"],c2a:["Ceci","Jime"],c2b:["Ale","Ani"],r1:"Caro",r2:"Maru"},
+  {c1a:["Jime","Maga"],c1b:["Ceci","Flor"],c2a:["Maru","Ale"],c2b:["Dani","Caro"],r1:"Vale",r2:"Ani"},
+  {c1a:["Dani","Maru"],c1b:["Caro","Ale"],c2a:["Ceci","Vale"],c2b:["Maga","Ani"],r1:"Flor",r2:"Jime"},
+  {c1a:["Maga","Flor"],c1b:["Jime","Ale"],c2a:["Vale","Maru"],c2b:["Caro","Ani"],r1:"Ceci",r2:"Dani"},
+  {c1a:["Dani","Ani"],c1b:["Vale","Jime"],c2a:["Caro","Flor"],c2b:["Ceci","Maru"],r1:"Maga",r2:"Ale"}
 ];
 
 // scores[ri][ci] = {winner:0/1/2, sa:"", sb:""}
@@ -182,7 +183,7 @@ function ranking(){
 
 /* ---- RENDER FIXTURE ---- */
 function renderFixture(){
-  var d=done(), pct=Math.round(d/8*100);
+  var d=done(), pct=Math.round(d/10*100);
   var h='<div class="prog-wrap"><div class="prog-lbl"><span>Partidos jugados</span><span>'+d+' / 8</span></div>'
     +'<div class="prog-bar"><div class="prog-fill" style="width:'+pct+'%"></div></div></div>';
 
@@ -248,7 +249,7 @@ function renderRanking(){
   var rank=ranking();
   var maxW=rank.reduce(function(m,r){return Math.max(m,r.wins);},1);
   var h='';
-  if(d===8){
+  if(d===10){
     h+='<div class="champ"><div style="font-size:44px">🏆</div>'
       +'<div style="font-size:13px;font-weight:700;color:#7A4800">¡Campeona del torneo!</div>'
       +'<div style="font-size:26px;font-weight:800;color:#1A2733">'+rank[0].name+'</div>'
@@ -280,7 +281,7 @@ function renderRanking(){
 
 /* ---- RENDER CRUCES ---- */
 function renderCruces(){
-  var h='<div class="info-box">📋 <strong>Cruces completos del torneo.</strong> 4 rondas de 30 min · 0 parejas repetidas · Caro y Flor juegan todas las rondas · El resto descansa 1 vez.</div>';
+  var h='<div class="info-box">📋 <strong>Cruces completos del torneo.</strong> 5 rondas · 4 partidos por jugadora · 0 parejas repetidas · Todas descansan exactamente 1 vez.</div>';
   h+='<div class="cruces-card"><div class="cruces-hdr">📅 Programa de partidos</div>';
   ROUNDS.forEach(function(round,ri){
     var sc1=scores[ri][0], sc2=scores[ri][1];
