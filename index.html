@@ -164,7 +164,7 @@ var scores = Array(5).fill(null).map(function(){return [{winner:0,sa:"",sb:""},{
 // ── PERSISTENCE ──────────────────────────────────────────────────────────────
 function loadState(){
   try{
-    var sv = sessionStorage.getItem("pf5");
+    var sv = localStorage.getItem("pf5");
     if(!sv) return;
     var p = JSON.parse(sv);
     if(p.players) players = p.players;
@@ -176,7 +176,7 @@ function loadState(){
 }
 function save(){
   try{
-    sessionStorage.setItem("pf5",JSON.stringify({
+    localStorage.setItem("pf5",JSON.stringify({
       players:players,positions:positions,mode:activeMode,
       manualPairs:manualPairs,scores:scores
     }));
