@@ -259,10 +259,16 @@ function renderRanking(){
     var bc=i===0?"b1":i===1?"b2":i===2?"b3":"bx";
     var pct=Math.round(p.wins/maxW*100);
     var diffStr=p.diff>0?'+'+p.diff:p.diff+'';
+    var losses=p.played-p.wins;
     h+='<div class="rank-row">'
       +'<div class="bubble '+bc+'">'+(i+1)+'</div>'
       +'<div class="rinfo"><div class="rname">'+p.name+'</div>'
-      +'<div class="rsub">'+POS[p.name]+' · '+p.played+' jugados'+(p.played>0?' · '+p.gf+':'+p.gc+' ('+diffStr+')'  :'')+' · '+p.rests+' desc.</div>'
+      +'<div class="rsub">'+POS[p.name]+' · '+p.rests+' desc.</div>'
+      +'<div style="display:flex;gap:6px;margin-top:5px">'
+      +'<span style="font-size:10px;font-weight:700;background:#D5F0E0;color:#276836;padding:2px 7px;border-radius:8px">✓ '+p.wins+' gan.</span>'
+      +'<span style="font-size:10px;font-weight:700;background:#FDECEA;color:#C0392B;padding:2px 7px;border-radius:8px">✗ '+losses+' perd.</span>'
+      +(p.played>0?'<span style="font-size:10px;font-weight:700;background:#EBF3FB;color:#2E75B6;padding:2px 7px;border-radius:8px">'+p.gf+':'+p.gc+'</span>':'')
+      +'</div>'
       +'<div class="rbar"><div class="rbar-fill" style="width:'+pct+'%"></div></div></div>'
       +'<div class="rwins"><div class="rnum-big">'+p.wins+'</div>'
       +'<div class="rlbl">vic'+(p.wins!==1?'s':'')+'</div></div>'
