@@ -552,6 +552,18 @@ function renderRanking(){
 }
 
 // ── RENDER CRUCES ─────────────────────────────────────────────────────────────
+function playerTag(idx){
+  var name=players[idx]||"?";
+  var p=positions[idx]||"D";
+  var label=p==="D"?"D":p==="R"?"R":"D+R";
+  var style=p==="D"
+    ?"background:#D6E8FA;color:#2E75B6"
+    :p==="R"
+    ?"background:#D5F0E0;color:#276836"
+    :"background:#EDE0FF;color:#7B3FA0";
+  return name+'<span style="font-size:9px;font-weight:700;padding:1px 4px;border-radius:5px;margin-left:3px;'+style+'">'+label+'</span>';
+}
+
 function renderCruces(){
   ensureScores();
   var rounds=getActiveRounds();
@@ -561,19 +573,19 @@ function renderCruces(){
   var h='<div class="cruces-card"><div class="cruces-hdr">Programa de partidos</div>';
   rounds.forEach(function(round,ri){
     var sc=(scores[ri])||[];
-    var restNames=round.resting.map(function(i){return players[i]||"?";}).join(" / ");
+    var restNames=round.resting.map(function(i){return playerTag(i);}).join(" &nbsp; ");
     h+='<div class="cruce-row"><div class="cruce-round">Ronda '+(ri+1)+' - '+tdata.times[ri]+'</div>';
     round.courts.forEach(function(court,ci){
       var s=(sc[ci])||{sa:"",sb:""};
       var rtxt=(s.sa&&s.sb)?s.sa+"-"+s.sb:"";
       var col=cols[ci%3];
-      var tAN=court[0].map(function(i){return players[i]||"?";});
-      var tBN=court[1].map(function(i){return players[i]||"?";});
+      var tATags=court[0].map(function(i){return playerTag(i);});
+      var tBTags=court[1].map(function(i){return playerTag(i);});
       h+='<div class="cruce-match"><span class="cruce-court '+col+'">C'+(ci+1)+'</span>'
-        +'<span class="cruce-teams">'+tAN.join("/")+' vs '+tBN.join("/")+'</span>'
+        +'<span class="cruce-teams">'+tATags.join(" / ")+' <span style="color:#aaa">vs</span> '+tBTags.join(" / ")+'</span>'
         +(rtxt?'<span class="cruce-result '+col+'">'+rtxt+'</span>':"")+'</div>';
     });
-    if(restNames) h+='<span class="cruce-rest">Desc: '+restNames+'</span>';
+    if(restNames) h+='<div class="cruce-rest" style="display:flex;flex-wrap:wrap;gap:4px;align-items:center"><span style="margin-right:2px">Desc:</span>'+restNames+'</div>';
     h+='</div>';
   });
   h+="</div>";
