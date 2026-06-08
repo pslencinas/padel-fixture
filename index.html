@@ -10,123 +10,198 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 body{font-family:-apple-system,sans-serif;background:#F0F4F8;color:#1A2733;min-height:100vh}
-.hdr{background:#1A3A5C;color:#fff;padding:16px;text-align:center;position:sticky;top:0;z-index:99;box-shadow:0 2px 10px rgba(0,0,0,.2)}
-.hdr h1{font-size:20px;font-weight:700}
-.hdr p{font-size:12px;opacity:.7;margin-top:2px}
-.tabs{display:flex;background:#1A3A5C;padding:0 16px 12px;gap:8px}
-.tab{flex:1;padding:8px 4px;border-radius:20px;border:none;font-size:13px;font-weight:600;cursor:pointer;background:rgba(255,255,255,.15);color:rgba(255,255,255,.7)}
+.hdr{background:#1A3A5C;color:#fff;padding:16px 16px 12px;text-align:center;position:sticky;top:0;z-index:99;box-shadow:0 2px 10px rgba(0,0,0,.25)}
+.hdr h1{font-size:19px;font-weight:700}
+.hdr p{font-size:11px;opacity:.7;margin-top:2px}
+.tabs{display:flex;background:#1A3A5C;padding:0 12px 12px;gap:6px}
+.tab{flex:1;padding:7px 2px;border-radius:20px;border:none;font-size:12px;font-weight:600;cursor:pointer;background:rgba(255,255,255,.15);color:rgba(255,255,255,.7)}
 .tab.on{background:#fff;color:#1A3A5C}
-.pg{padding:16px;max-width:480px;margin:0 auto}
-.prog-wrap{background:#fff;border-radius:14px;padding:14px;margin-bottom:12px;box-shadow:0 2px 12px rgba(0,0,0,.1)}
-.prog-lbl{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:#1A3A5C;margin-bottom:8px}
+.pg{padding:14px;max-width:480px;margin:0 auto;padding-bottom:30px}
+
+/* PROGRESS */
+.prog-wrap{background:#fff;border-radius:14px;padding:13px;margin-bottom:11px;box-shadow:0 2px 10px rgba(0,0,0,.09)}
+.prog-lbl{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:#1A3A5C;margin-bottom:7px}
 .prog-bar{height:8px;background:#E8EDF2;border-radius:4px;overflow:hidden}
 .prog-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,#2E75B6,#276836);transition:width .4s}
-.card{background:#fff;border-radius:14px;box-shadow:0 2px 12px rgba(0,0,0,.1);margin-bottom:12px;overflow:hidden}
-.rhdr{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:#1A3A5C;color:#fff}
-.rnum{font-size:15px;font-weight:700}
-.rtime{font-size:12px;opacity:.7}
+
+/* ROUND CARD */
+.card{background:#fff;border-radius:14px;box-shadow:0 2px 10px rgba(0,0,0,.09);margin-bottom:11px;overflow:hidden}
+.rhdr{display:flex;align-items:center;justify-content:space-between;padding:9px 13px;background:#1A3A5C;color:#fff;flex-wrap:wrap;gap:4px}
+.rnum{font-size:14px;font-weight:700}
+.rtime{font-size:11px;opacity:.75;background:rgba(255,255,255,.15);padding:2px 7px;border-radius:10px}
 .rbadge{font-size:11px;background:#FFF2CC;color:#8B5E00;padding:2px 8px;border-radius:20px;font-weight:600}
-.court{padding:12px 14px}
-.court.sep{border-bottom:1px solid #E8EDF2}
-.clbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+
+/* COURT */
+.court{padding:11px 13px}
+.court.sep{border-bottom:1px solid #EEF2F7}
+.clbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:7px}
 .clbl.b{color:#2E75B6}.clbl.g{color:#276836}
-.mrow{display:flex;align-items:center;gap:6px}
-.team{flex:1;text-align:center;font-size:13px;font-weight:600;line-height:1.4;color:#1A2733}
+.mrow{display:flex;align-items:center;gap:5px}
+.team{flex:1;text-align:center;font-size:12px;font-weight:600;line-height:1.4;color:#1A2733}
 .team.wb{color:#2E75B6;font-weight:800}
 .team.wg{color:#276836;font-weight:800}
-.wbadge{display:block;font-size:10px;font-weight:700;margin-top:2px}
+.wbadge{display:block;font-size:9px;font-weight:700;margin-top:1px}
 .wbadge.b{color:#2E75B6}.wbadge.g{color:#276836}
-.sarea{display:flex;align-items:center;gap:4px;flex-shrink:0}
-.sbtn{width:38px;height:38px;border-radius:50%;border:2px solid #E8EDF2;font-size:15px;font-weight:700;cursor:pointer;background:#fff;color:#6B7A8D;display:flex;align-items:center;justify-content:center;transition:all .15s}
+
+/* SCORE BUTTONS */
+.sarea{display:flex;align-items:center;gap:3px;flex-shrink:0}
+.sbtn{width:36px;height:36px;border-radius:50%;border:2px solid #E8EDF2;font-size:14px;font-weight:700;cursor:pointer;background:#fff;color:#6B7A8D;-webkit-appearance:none}
 .sbtn.ab{background:#2E75B6;color:#fff;border-color:#2E75B6}
 .sbtn.ag{background:#276836;color:#fff;border-color:#276836}
-.stxt{font-size:13px;font-weight:800;min-width:24px;text-align:center;color:#1A3A5C}
-.rank-card{background:#fff;border-radius:14px;box-shadow:0 2px 12px rgba(0,0,0,.1);overflow:hidden;margin-bottom:12px}
-.rank-hdr{background:#1A3A5C;color:#fff;padding:12px 16px;font-size:15px;font-weight:700}
-.rank-row{display:flex;align-items:center;padding:11px 16px;border-bottom:1px solid #E8EDF2;gap:10px}
+.stxt{font-size:11px;font-weight:800;min-width:20px;text-align:center;color:#1A3A5C}
+
+/* SCORE INPUT */
+.score-row{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:9px;padding-top:9px;border-top:1px dashed #E8EDF2}
+.score-lbl{font-size:10px;color:#6B7A8D;font-weight:600;flex:1;text-align:center}
+.score-inp{width:44px;height:34px;border:2px solid #E8EDF2;border-radius:8px;text-align:center;font-size:16px;font-weight:700;color:#1A3A5C;background:#F8FAFC;-webkit-appearance:none}
+.score-inp:focus{outline:none;border-color:#2E75B6}
+.score-dash{font-size:18px;font-weight:700;color:#6B7A8D}
+
+/* RANKING */
+.rank-card{background:#fff;border-radius:14px;box-shadow:0 2px 10px rgba(0,0,0,.09);overflow:hidden;margin-bottom:11px}
+.rank-hdr{background:#1A3A5C;color:#fff;padding:11px 15px;font-size:14px;font-weight:700}
+.rank-row{display:flex;align-items:center;padding:10px 15px;border-bottom:1px solid #EEF2F7;gap:9px}
 .rank-row:last-child{border-bottom:none}
-.bubble{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0}
-.b1{background:#FFD700;color:#7A5800}.b2{background:#C0C0C0;color:#444}.b3{background:#CD7F32;color:#fff}.bx{background:#E8EDF2;color:#6B7A8D;font-size:12px}
+.bubble{width:27px;height:27px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;flex-shrink:0}
+.b1{background:#FFD700;color:#7A5800}.b2{background:#C0C0C0;color:#444}.b3{background:#CD7F32;color:#fff}.bx{background:#E8EDF2;color:#6B7A8D;font-size:11px}
 .rinfo{flex:1}
-.rname{font-size:15px;font-weight:600}
-.rsub{font-size:11px;color:#6B7A8D;margin-top:1px}
-.rbar{height:5px;background:#E8EDF2;border-radius:3px;margin-top:5px;overflow:hidden}
+.rname{font-size:14px;font-weight:600}
+.rsub{font-size:10px;color:#6B7A8D;margin-top:1px}
+.rbar{height:4px;background:#E8EDF2;border-radius:3px;margin-top:5px;overflow:hidden}
 .rbar-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,#2E75B6,#5BA4E0);transition:width .5s}
 .rwins{text-align:right}
-.rnum-big{font-size:22px;font-weight:800;color:#1A3A5C;line-height:1}
+.rnum-big{font-size:20px;font-weight:800;color:#1A3A5C;line-height:1}
 .rlbl{font-size:10px;color:#6B7A8D}
-.empty{text-align:center;padding:40px 20px;color:#6B7A8D}
-.empty .ico{font-size:48px;margin-bottom:12px}
-.champ{background:linear-gradient(135deg,#FFD700,#FFA500);padding:20px;text-align:center;border-radius:14px;margin-bottom:12px;box-shadow:0 2px 12px rgba(0,0,0,.1)}
-.reset-btn{width:100%;padding:14px;border-radius:14px;border:2px solid #C0392B;background:#fff;color:#C0392B;font-size:14px;font-weight:700;cursor:pointer;margin-top:4px}
+
+/* CRUCES */
+.cruces-card{background:#fff;border-radius:14px;box-shadow:0 2px 10px rgba(0,0,0,.09);overflow:hidden;margin-bottom:11px}
+.cruces-hdr{background:#1A3A5C;color:#fff;padding:11px 15px;font-size:14px;font-weight:700}
+.cruce-row{padding:10px 14px;border-bottom:1px solid #EEF2F7}
+.cruce-row:last-child{border-bottom:none}
+.cruce-round{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:#6B7A8D;margin-bottom:6px}
+.cruce-match{display:flex;align-items:center;gap:6px;margin-bottom:4px}
+.cruce-match:last-child{margin-bottom:0}
+.cruce-court{font-size:9px;font-weight:700;padding:1px 5px;border-radius:8px;flex-shrink:0}
+.cruce-court.b{background:#D6E8FA;color:#2E75B6}
+.cruce-court.g{background:#D5F0E0;color:#276836}
+.cruce-teams{font-size:12px;font-weight:600;color:#1A2733;flex:1}
+.cruce-rest{font-size:10px;color:#8B5E00;background:#FFF2CC;padding:2px 7px;border-radius:10px;margin-top:5px;display:inline-block}
+.cruce-result{font-size:11px;font-weight:700;color:#6B7A8D;flex-shrink:0}
+.cruce-result.b{color:#2E75B6}.cruce-result.g{color:#276836}
+
+/* MISC */
+.empty{text-align:center;padding:36px 20px;color:#6B7A8D}
+.empty .ico{font-size:44px;margin-bottom:10px}
+.champ{background:linear-gradient(135deg,#FFD700,#FFA500);padding:18px;text-align:center;border-radius:14px;margin-bottom:11px;box-shadow:0 2px 10px rgba(0,0,0,.1)}
+.reset-btn{width:100%;padding:13px;border-radius:14px;border:2px solid #C0392B;background:#fff;color:#C0392B;font-size:13px;font-weight:700;cursor:pointer;margin-top:2px;-webkit-appearance:none}
+.info-box{background:#EBF3FB;border-radius:10px;padding:10px 13px;margin-bottom:11px;font-size:11px;color:#1A3A5C;line-height:1.5}
 </style>
 </head>
 <body>
 
 <div class="hdr">
   <h1>🎾 Fixture Pádel</h1>
-  <p>Sábado 9:30 – 11:30 · 2 canchas · 10 chicas</p>
+  <p>Sábado 9:30 – 11:30 · 2 canchas · 10 chicas · 30 min/partido</p>
 </div>
 <div class="tabs">
   <button class="tab on" id="t-fix" onclick="showTab('fixture')">Fixture</button>
   <button class="tab" id="t-rank" onclick="showTab('ranking')">Ranking</button>
+  <button class="tab" id="t-cruces" onclick="showTab('cruces')">Cruces</button>
 </div>
 
 <div id="pg-fixture" class="pg"></div>
 <div id="pg-ranking" class="pg" style="display:none"></div>
+<div id="pg-cruces" class="pg" style="display:none"></div>
 
 <script>
 var PLAYERS=["Caro","Maru","Vale","Ani","Flor","Jime","Ceci","Dani","Maga","Ale"];
 var POS={Caro:"Drive",Maru:"Drive/Revés",Vale:"Revés",Ani:"Revés",Flor:"Revés/Drive",Jime:"Revés",Ceci:"Revés",Dani:"Drive",Maga:"Drive",Ale:"Drive"};
-var TIMES=["9:30","9:42","9:54","10:06","10:18","10:30","10:42","10:54","11:06","11:18"];
+
 var ROUNDS=[
-  {c1a:["Vale","Ani"],  c1b:["Flor","Jime"], c2a:["Ceci","Dani"], c2b:["Maga","Ale"],  r1:"Caro",r2:"Maru"},
-  {c1a:["Caro","Flor"], c1b:["Maru","Jime"], c2a:["Ceci","Maga"], c2b:["Dani","Ale"],  r1:"Vale",r2:"Ani"},
-  {c1a:["Caro","Vale"], c1b:["Maru","Ani"],  c2a:["Ceci","Ale"],  c2b:["Dani","Maga"], r1:"Flor",r2:"Jime"},
-  {c1a:["Caro","Ani"],  c1b:["Maru","Vale"], c2a:["Flor","Maga"], c2b:["Jime","Ale"],  r1:"Ceci",r2:"Dani"},
-  {c1a:["Caro","Maru"], c1b:["Vale","Flor"], c2a:["Ani","Ceci"],  c2b:["Jime","Dani"], r1:"Maga",r2:"Ale"},
-  {c1a:["Maru","Ceci"], c1b:["Vale","Dani"], c2a:["Ani","Maga"],  c2b:["Flor","Ale"],  r1:"Caro",r2:"Jime"},
-  {c1a:["Caro","Jime"], c1b:["Vale","Maga"], c2a:["Ani","Ale"],   c2b:["Flor","Dani"], r1:"Maru",r2:"Ceci"},
-  {c1a:["Caro","Ceci"], c1b:["Maru","Ale"],  c2a:["Ani","Flor"],  c2b:["Jime","Maga"], r1:"Vale",r2:"Dani"},
-  {c1a:["Caro","Dani"], c1b:["Maru","Flor"], c2a:["Vale","Ale"],  c2b:["Jime","Ceci"], r1:"Ani", r2:"Maga"},
-  {c1a:["Caro","Maga"], c1b:["Maru","Dani"], c2a:["Vale","Ceci"], c2b:["Ani","Jime"],  r1:"Flor",r2:"Ale"}
+  {time:"9:30 – 10:00", c1a:["Ale","Flor"],  c1b:["Caro","Dani"], c2a:["Ceci","Vale"], c2b:["Jime","Maga"], r1:"Maru", r2:"Ani"},
+  {time:"10:00 – 10:30",c1a:["Ceci","Ale"],  c1b:["Caro","Flor"], c2a:["Maga","Maru"], c2b:["Ani","Dani"],  r1:"Vale", r2:"Jime"},
+  {time:"10:30 – 11:00",c1a:["Maga","Flor"], c1b:["Jime","Vale"], c2a:["Caro","Ale"],  c2b:["Maru","Ani"],  r1:"Ceci", r2:"Dani"},
+  {time:"11:00 – 11:30",c1a:["Dani","Vale"],  c1b:["Flor","Ceci"], c2a:["Jime","Maru"], c2b:["Caro","Ani"],  r1:"Maga", r2:"Ale"}
 ];
 
-// scores[round][court] = 0 (sin resultado), 1 (gana equipo A), 2 (gana equipo B)
-var scores=[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]];
-try{var s=sessionStorage.getItem('pf');if(s)scores=JSON.parse(s);}catch(e){}
+// scores[ri][ci] = {winner:0/1/2, sa:"", sb:""}
+var scores = ROUNDS.map(function(){return [{winner:0,sa:"",sb:""},{winner:0,sa:"",sb:""}];});
+try{var sv=sessionStorage.getItem('pf2');if(sv)scores=JSON.parse(sv);}catch(e){}
 
-function save(){try{sessionStorage.setItem('pf',JSON.stringify(scores));}catch(e){}}
+function save(){try{sessionStorage.setItem('pf2',JSON.stringify(scores));}catch(e){}}
 
-function toggle(ri,ci,w){
-  scores[ri][ci]=(scores[ri][ci]===w)?0:w;
+function toggleWinner(ri,ci,w){
+  scores[ri][ci].winner = scores[ri][ci].winner===w ? 0 : w;
   save(); render();
+}
+
+function updateScore(ri,ci,side,val){
+  if(side==='a') scores[ri][ci].sa=val;
+  else scores[ri][ci].sb=val;
+  // auto-set winner if both filled
+  var sa=parseInt(scores[ri][ci].sa), sb=parseInt(scores[ri][ci].sb);
+  if(!isNaN(sa)&&!isNaN(sb)&&sa!==sb){
+    scores[ri][ci].winner = sa>sb ? 1 : 2;
+  }
+  save(); renderRanking(); renderCruces();
 }
 
 function done(){
   var n=0;
-  for(var i=0;i<scores.length;i++)for(var j=0;j<scores[i].length;j++)if(scores[i][j]!==0)n++;
+  scores.forEach(function(r){r.forEach(function(c){if(c.winner!==0)n++;});});
   return n;
 }
 
 function ranking(){
   var st={};
-  PLAYERS.forEach(function(p){st[p]={wins:0,played:0,rests:0};});
+  PLAYERS.forEach(function(p){st[p]={wins:0,played:0,rests:0,gf:0,gc:0};});
   ROUNDS.forEach(function(round,ri){
     st[round.r1].rests++; st[round.r2].rests++;
     [[round.c1a,round.c1b,0],[round.c2a,round.c2b,1]].forEach(function(x){
-      var tA=x[0],tB=x[1],ci=x[2],res=scores[ri][ci];
-      if(res!==0){tA.forEach(function(p){st[p].played++;});tB.forEach(function(p){st[p].played++;});}
+      var tA=x[0],tB=x[1],ci=x[2];
+      var sc=scores[ri][ci];
+      var res=sc.winner;
+      var sa=parseInt(sc.sa)||0, sb=parseInt(sc.sb)||0;
+      if(res!==0){
+        tA.forEach(function(p){st[p].played++;st[p].gf+=sa;st[p].gc+=sb;});
+        tB.forEach(function(p){st[p].played++;st[p].gf+=sb;st[p].gc+=sa;});
+      }
       if(res===1)tA.forEach(function(p){st[p].wins++;});
       if(res===2)tB.forEach(function(p){st[p].wins++;});
     });
   });
-  return PLAYERS.map(function(p){return {name:p,wins:st[p].wins,played:st[p].played,rests:st[p].rests};})
-    .sort(function(a,b){return b.wins-a.wins||b.played-a.played;});
+  return PLAYERS.map(function(p){
+    var s=st[p];
+    return {name:p,wins:s.wins,played:s.played,rests:s.rests,gf:s.gf,gc:s.gc,diff:s.gf-s.gc};
+  }).sort(function(a,b){
+    if(b.wins!==a.wins)return b.wins-a.wins;
+    if(b.diff!==a.diff)return b.diff-a.diff;
+    return b.gf-a.gf;
+  });
+}
+
+/* ---- RENDER FIXTURE ---- */
+function renderFixture(){
+  var d=done(), pct=Math.round(d/8*100);
+  var h='<div class="prog-wrap"><div class="prog-lbl"><span>Partidos jugados</span><span>'+d+' / 8</span></div>'
+    +'<div class="prog-bar"><div class="prog-fill" style="width:'+pct+'%"></div></div></div>';
+
+  ROUNDS.forEach(function(round,ri){
+    h+='<div class="card">'
+      +'<div class="rhdr"><span class="rnum">Ronda '+(ri+1)+'</span>'
+      +'<span class="rtime">'+round.time+'</span>'
+      +'<span class="rbadge">💤 '+round.r1+' / '+round.r2+'</span></div>'
+      +makeCourt(ri,0,round.c1a,round.c1b,false)
+      +makeCourt(ri,1,round.c2a,round.c2b,true)
+      +'</div>';
+  });
+  h+='<button class="reset-btn" onclick="resetAll()">🔄 Reiniciar resultados</button>';
+  document.getElementById('pg-fixture').innerHTML=h;
 }
 
 function makeCourt(ri,ci,tA,tB,green){
-  var res=scores[ri][ci];
+  var sc=scores[ri][ci];
+  var res=sc.winner;
   var aW=res===1,bW=res===2;
   var col=green?"g":"b";
   var aClass="team"+(aW?" w"+col:"");
@@ -134,35 +209,35 @@ function makeCourt(ri,ci,tA,tB,green){
   var aBtnClass="sbtn"+(aW?" a"+col:"");
   var bBtnClass="sbtn"+(bW?" a"+col:"");
   var stxt=res===0?"vs":res===1?"✓–":"–✓";
+  // score inputs
+  var scoreRow='<div class="score-row">'
+    +'<div class="score-lbl">'+tA[0]+' / '+tA[1]+'</div>'
+    +'<input class="score-inp" type="number" min="0" max="99" inputmode="numeric" pattern="[0-9]*" placeholder="–" value="'+sc.sa+'"'
+    +' onchange="updateScore('+ri+','+ci+',\'a\',this.value)"'
+    +' oninput="updateScore('+ri+','+ci+',\'a\',this.value)">'
+    +'<span class="score-dash">–</span>'
+    +'<input class="score-inp" type="number" min="0" max="99" inputmode="numeric" pattern="[0-9]*" placeholder="–" value="'+sc.sb+'"'
+    +' onchange="updateScore('+ri+','+ci+',\'b\',this.value)"'
+    +' oninput="updateScore('+ri+','+ci+',\'b\',this.value)">'
+    +'<div class="score-lbl">'+tB[0]+' / '+tB[1]+'</div>'
+    +'</div>';
+
   return '<div class="court'+(ci===0?" sep":"")+'">'
     +'<div class="clbl '+col+'">Cancha '+(ci+1)+'</div>'
     +'<div class="mrow">'
     +'<div class="'+aClass+'">'+tA[0]+'<br>'+tA[1]+(aW?'<span class="wbadge '+col+'">✓ Ganó</span>':'')+'</div>'
     +'<div class="sarea">'
-    +'<button class="'+aBtnClass+'" onclick="toggle('+ri+','+ci+',1)">◀</button>'
+    +'<button class="'+aBtnClass+'" onclick="toggleWinner('+ri+','+ci+',1)">◀</button>'
     +'<span class="stxt">'+stxt+'</span>'
-    +'<button class="'+bBtnClass+'" onclick="toggle('+ri+','+ci+',2)">▶</button>'
+    +'<button class="'+bBtnClass+'" onclick="toggleWinner('+ri+','+ci+',2)">▶</button>'
     +'</div>'
     +'<div class="'+bClass+'">'+tB[0]+'<br>'+tB[1]+(bW?'<span class="wbadge '+col+'">✓ Ganó</span>':'')+'</div>'
-    +'</div></div>';
+    +'</div>'
+    +scoreRow
+    +'</div>';
 }
 
-function renderFixture(){
-  var d=done(), pct=Math.round(d/20*100);
-  var h='<div class="prog-wrap"><div class="prog-lbl"><span>Partidos jugados</span><span>'+d+' / 20</span></div>'
-    +'<div class="prog-bar"><div class="prog-fill" style="width:'+pct+'%"></div></div></div>';
-  ROUNDS.forEach(function(round,ri){
-    h+='<div class="card">'
-      +'<div class="rhdr"><span class="rnum">Ronda '+(ri+1)+'</span><span class="rtime">'+TIMES[ri]+'</span>'
-      +'<span class="rbadge">💤 '+round.r1+' / '+round.r2+'</span></div>'
-      +makeCourt(ri,0,round.c1a,round.c1b,false)
-      +makeCourt(ri,1,round.c2a,round.c2b,true)
-      +'</div>';
-  });
-  h+='<button class="reset-btn" onclick="resetAll()">🔄 Reiniciar resultados</button><div style="height:24px"></div>';
-  document.getElementById('pg-fixture').innerHTML=h;
-}
-
+/* ---- RENDER RANKING ---- */
 function renderRanking(){
   var d=done();
   var el=document.getElementById('pg-ranking');
@@ -173,41 +248,101 @@ function renderRanking(){
   var rank=ranking();
   var maxW=rank.reduce(function(m,r){return Math.max(m,r.wins);},1);
   var h='';
-  if(d===20){
-    h+='<div class="champ"><div style="font-size:48px">🏆</div>'
-      +'<div style="font-size:14px;font-weight:700;color:#7A4800">¡Campeona del torneo!</div>'
-      +'<div style="font-size:28px;font-weight:800;color:#1A2733">'+rank[0].name+'</div>'
-      +'<div style="font-size:13px;color:#7A4800;margin-top:4px">'+rank[0].wins+' victorias</div></div>';
+  if(d===8){
+    h+='<div class="champ"><div style="font-size:44px">🏆</div>'
+      +'<div style="font-size:13px;font-weight:700;color:#7A4800">¡Campeona del torneo!</div>'
+      +'<div style="font-size:26px;font-weight:800;color:#1A2733">'+rank[0].name+'</div>'
+      +'<div style="font-size:12px;color:#7A4800;margin-top:3px">'+rank[0].wins+' victorias</div></div>';
   }
   h+='<div class="rank-card"><div class="rank-hdr">🏆 Ranking — '+d+' partido'+(d!==1?'s':'')+' jugado'+(d!==1?'s':'')+'</div>';
   rank.forEach(function(p,i){
     var bc=i===0?"b1":i===1?"b2":i===2?"b3":"bx";
     var pct=Math.round(p.wins/maxW*100);
+    var diffStr=p.diff>0?'+'+p.diff:p.diff+'';
     h+='<div class="rank-row">'
       +'<div class="bubble '+bc+'">'+(i+1)+'</div>'
       +'<div class="rinfo"><div class="rname">'+p.name+'</div>'
-      +'<div class="rsub">'+POS[p.name]+' · '+p.played+' jugados · '+p.rests+' desc.</div>'
+      +'<div class="rsub">'+POS[p.name]+' · '+p.played+' jugados'+(p.played>0?' · '+p.gf+':'+p.gc+' ('+diffStr+')'  :'')+' · '+p.rests+' desc.</div>'
       +'<div class="rbar"><div class="rbar-fill" style="width:'+pct+'%"></div></div></div>'
       +'<div class="rwins"><div class="rnum-big">'+p.wins+'</div>'
-      +'<div class="rlbl">victoria'+(p.wins!==1?'s':'')+'</div></div>'
+      +'<div class="rlbl">vic'+(p.wins!==1?'s':'')+'</div></div>'
       +'</div>';
   });
   h+='</div>';
   el.innerHTML=h;
 }
 
-function render(){renderFixture();renderRanking();}
+/* ---- RENDER CRUCES ---- */
+function renderCruces(){
+  var h='<div class="info-box">📋 <strong>Cruces completos del torneo.</strong> 4 rondas de 30 min · 0 parejas repetidas · Caro y Flor juegan todas las rondas · El resto descansa 1 vez.</div>';
+  h+='<div class="cruces-card"><div class="cruces-hdr">📅 Programa de partidos</div>';
+  ROUNDS.forEach(function(round,ri){
+    var sc1=scores[ri][0], sc2=scores[ri][1];
+    var r1txt=sc1.winner===0?'':(sc1.sa&&sc1.sb?sc1.sa+' – '+sc1.sb:(sc1.winner===1?'✓':'–')+' / '+(sc1.winner===2?'✓':'–'));
+    var r2txt=sc2.winner===0?'':(sc2.sa&&sc2.sb?sc2.sa+' – '+sc2.sb:(sc2.winner===1?'✓':'–')+' / '+(sc2.winner===2?'✓':'–'));
+    h+='<div class="cruce-row">'
+      +'<div class="cruce-round">Ronda '+(ri+1)+' · '+round.time+'</div>'
+      +'<div class="cruce-match">'
+      +'<span class="cruce-court b">C1</span>'
+      +'<span class="cruce-teams">'+round.c1a[0]+' / '+round.c1a[1]+' <span style="color:#aaa">vs</span> '+round.c1b[0]+' / '+round.c1b[1]+'</span>'
+      +(r1txt?'<span class="cruce-result b">'+r1txt+'</span>':'')
+      +'</div>'
+      +'<div class="cruce-match">'
+      +'<span class="cruce-court g">C2</span>'
+      +'<span class="cruce-teams">'+round.c2a[0]+' / '+round.c2a[1]+' <span style="color:#aaa">vs</span> '+round.c2b[0]+' / '+round.c2b[1]+'</span>'
+      +(r2txt?'<span class="cruce-result g">'+r2txt+'</span>':'')
+      +'</div>'
+      +'<span class="cruce-rest">💤 '+round.r1+' / '+round.r2+'</span>'
+      +'</div>';
+  });
+  h+='</div>';
 
+  // Tabla de jugadoras
+  h+='<div class="cruces-card"><div class="cruces-hdr">👥 Jugadoras</div>';
+  var playCount={};
+  PLAYERS.forEach(function(p){playCount[p]=0;});
+  ROUNDS.forEach(function(round){
+    [round.c1a,round.c1b,round.c2a,round.c2b].forEach(function(team){
+      team.forEach(function(p){playCount[p]++;});
+    });
+  });
+  PLAYERS.forEach(function(p,i){
+    var rests=4-playCount[p];
+    h+='<div style="display:flex;align-items:center;padding:9px 14px;border-bottom:'+(i<PLAYERS.length-1?'1px solid #EEF2F7':'none')+'">'
+      +'<div style="width:22px;height:22px;border-radius:50%;background:#E8EDF2;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#6B7A8D;flex-shrink:0">'+(i+1)+'</div>'
+      +'<div style="flex:1;margin-left:10px"><div style="font-size:14px;font-weight:600">'+p+'</div>'
+      +'<div style="font-size:10px;color:#6B7A8D">'+POS[p]+' · '+playCount[p]+' partidos · '+rests+' descanso'+(rests!==1?'s':'')+'</div></div>'
+      +(rests===0?'<span style="font-size:10px;background:#D6E8FA;color:#2E75B6;padding:2px 7px;border-radius:10px;font-weight:600">juega todas</span>':'')
+      +'</div>';
+  });
+  h+='</div>';
+
+  document.getElementById('pg-cruces').innerHTML=h;
+}
+
+/* ---- GLOBAL ---- */
+function render(){renderFixture();renderRanking();renderCruces();}
+
+function showTab(t){
+  ['fixture','ranking','cruces'].forEach(function(id){
+    document.getElementById('pg-'+id).style.display=t===id?'block':'none';
+    document.getElementById('t-'+id.slice(0,id==='cruces'?6:id==='ranking'?4:3)).className='tab'+(t===id?' on':'');
+  });
+}
+
+// Fix tab IDs
 function showTab(t){
   document.getElementById('pg-fixture').style.display=t==='fixture'?'block':'none';
   document.getElementById('pg-ranking').style.display=t==='ranking'?'block':'none';
+  document.getElementById('pg-cruces').style.display=t==='cruces'?'block':'none';
   document.getElementById('t-fix').className='tab'+(t==='fixture'?' on':'');
   document.getElementById('t-rank').className='tab'+(t==='ranking'?' on':'');
+  document.getElementById('t-cruces').className='tab'+(t==='cruces'?' on':'');
 }
 
 function resetAll(){
   if(confirm('¿Reiniciar todos los resultados?')){
-    scores=[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]];
+    scores=ROUNDS.map(function(){return [{winner:0,sa:'',sb:''},{winner:0,sa:'',sb:''}];});
     save(); render();
   }
 }
