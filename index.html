@@ -128,7 +128,7 @@ try{var _sv=sessionStorage.getItem("pf4");if(_sv){var _p=JSON.parse(_sv);scores=
 function save(){try{sessionStorage.setItem("pf4",JSON.stringify({scores:scores,mode:activeMode,manual:MANUAL_ROUNDS}));}catch(e){}}
 function toggleWinner(ri,ci,w){scores[ri][ci].winner=scores[ri][ci].winner===w?0:w;save();render();}
 function updateScore(ri,ci,side,val){
-  if(side==="a")scores[ri][ci].sa=val;else scores[ri][ci].sb=val;
+  if(side===0||side==="0"||side==="a")scores[ri][ci].sa=val;else scores[ri][ci].sb=val;
   var sa=parseInt(scores[ri][ci].sa),sb=parseInt(scores[ri][ci].sb);
   if(!isNaN(sa)&&!isNaN(sb)&&sa!==sb)scores[ri][ci].winner=sa>sb?1:2;
   save();renderRanking();renderCruces();
@@ -179,6 +179,8 @@ function makeCourt(ri,ci,tA,tB,green){
   var stxt=res===0?"vs":res===1?"A gana":"B gana";
   var aWinBadge=aW?'<span class="wbadge '+col+'">Gano</span>':"";
   var bWinBadge=bW?'<span class="wbadge '+col+'">Gano</span>':"";
+  var oc_a="updateScore("+ri+","+ci+",0,this.value)";
+  var oc_b="updateScore("+ri+","+ci+",1,this.value)";
   return '<div class="court'+(ci===0?" sep":"")+'"><div class="clbl '+col+'">Cancha '+(ci+1)+'</div>'
     +'<div class="mrow">'
     +'<div class="'+aClass+'">'+tA[0]+'<br>'+tA[1]+aWinBadge+'</div>'
@@ -191,9 +193,9 @@ function makeCourt(ri,ci,tA,tB,green){
     +'</div>'
     +'<div class="score-row">'
     +'<div class="score-lbl">'+tA[0]+' / '+tA[1]+'</div>'
-    +'<input class="score-inp" type="number" min="0" max="99" inputmode="numeric" placeholder="-" value="'+sc.sa+'" onchange="updateScore('+ri+','+ci+',"a",this.value)" oninput="updateScore('+ri+','+ci+',"a",this.value)">'
+    +'<input class="score-inp" type="number" min="0" max="99" inputmode="numeric" placeholder="-" value="'+sc.sa+'" onchange="'+oc_a+'" oninput="'+oc_a+'">'
     +'<span class="score-dash">-</span>'
-    +'<input class="score-inp" type="number" min="0" max="99" inputmode="numeric" placeholder="-" value="'+sc.sb+'" onchange="updateScore('+ri+','+ci+',"b",this.value)" oninput="updateScore('+ri+','+ci+',"b",this.value)">'
+    +'<input class="score-inp" type="number" min="0" max="99" inputmode="numeric" placeholder="-" value="'+sc.sb+'" onchange="'+oc_b+'" oninput="'+oc_b+'">'
     +'<div class="score-lbl">'+tB[0]+' / '+tB[1]+'</div>'
     +'</div></div>';
 }
@@ -258,13 +260,57 @@ function renderCruces(){
   document.getElementById("pg-cruces").innerHTML=h;
 }
 var pairsMode="random";
+function shuffleRandom(){
+  // Fisher-Yates shuffle to reassign pairs, keeping rest schedule fixed
+  var rest_schedule=[["Caro","Maru"],["Vale","Ani"],["Flor","Jime"],["Ceci","Dani"],["Maga","Ale"]];
+  function pk(a,b){return (a<b)?[a,b]:[b,a];}
+  var pc={};
+  function addPair(a,b){var k=pk(a,b).join("|");pc[k]=(pc[k]||0)+1;}
+  function pairScore(a,b){var k=pk(a,b).join("|");return (pc[k]||0);}
+
+  var rounds=[];
+  for(var ri=0;ri<5;ri++){
+    var r1=rest_schedule[ri][0],r2=rest_schedule[ri][1];
+    var playing=PLAYERS.filter(function(p){return p!==r1&&p!==r2;});
+    var best=null,bestScore=99999;
+    for(var attempt=0;attempt<2000;attempt++){
+      // shuffle playing
+      for(var i=playing.length-1;i>0;i--){
+        var j=Math.floor(Math.random()*(i+1));
+        var tmp=playing[i];playing[i]=playing[j];playing[j]=tmp;
+      }
+      var c1=playing.slice(0,4),c2=playing.slice(4);
+      var pairings1=[[[c1[0],c1[1]],[c1[2],c1[3]]],[[c1[0],c1[2]],[c1[1],c1[3]]],[[c1[0],c1[3]],[c1[1],c1[2]]]];
+      var pairings2=[[[c2[0],c2[1]],[c2[2],c2[3]]],[[c2[0],c2[2]],[c2[1],c2[3]]],[[c2[0],c2[3]],[c2[1],c2[2]]]];
+      for(var pi=0;pi<3;pi++){for(var pj=0;pj<3;pj++){
+        var p1=pairings1[pi],p2=pairings2[pj];
+        var s=0;
+        [p1[0],p1[1],p2[0],p2[1]].forEach(function(t){s+=Math.pow(pairScore(t[0],t[1])+1,2);});
+        if(s<bestScore){bestScore=s;best={c1a:p1[0],c1b:p1[1],c2a:p2[0],c2b:p2[1],r1:r1,r2:r2};}
+      }}
+    }
+    rounds.push(best);
+    [best.c1a,best.c1b,best.c2a,best.c2b].forEach(function(t){addPair(t[0],t[1]);});
+  }
+  for(var i=0;i<5;i++) RANDOM_ROUNDS[i]=rounds[i];
+  // reset scores
+  scores=Array(5).fill(null).map(function(){return [{winner:0,sa:"",sb:""},{winner:0,sa:"",sb:""}];});
+  activeMode="random";
+  save();render();
+}
+
 function renderParejas(){
+  var onR="setPairsMode('random')";
+  var onM="setPairsMode('manual')";
+  var activeR=pairsMode==="random"?" on":"";
+  var activeM=pairsMode==="manual"?" on":"";
   var h='<div class="mode-toggle">'
-    +'<button class="mode-btn'+(pairsMode==="random"?" on":"")+"\" onclick=\"setPairsMode('random')\">Random</button>"
-    +'<button class="mode-btn'+(pairsMode==="manual"?" on":"")+"\" onclick=\"setPairsMode('manual')\">Manual</button>"
+    +'<button class="mode-btn'+activeR+'" onclick="'+onR+'">Random</button>'
+    +'<button class="mode-btn'+activeM+'" onclick="'+onM+'">Manual</button>'
     +'</div>';
   if(pairsMode==="random"){
     h+='<div class="ok-box">Fixture generado automaticamente: 5 rondas, todas juegan 4 partidos, todas descansan 1 vez, sin parejas repetidas.</div>';
+    h+='<button class="apply-btn" style="margin-bottom:11px;background:#2E75B6" onclick="shuffleRandom()">Mezclar de nuevo las parejas</button>';
     h+='<div class="section-card"><div class="section-hdr">Parejas del fixture</div>';
     RANDOM_ROUNDS.forEach(function(r,i){
       h+='<div style="padding:10px 14px;border-bottom:'+(i<4?"1px solid #EEF2F7":"none")+'">'
@@ -281,24 +327,23 @@ function renderParejas(){
       h+='<div class="ok-box" style="margin-top:4px">Este es el modo activo.</div>';
     }
   }else{
-    h+='<div class="warn-box">Selecciona las jugadoras de cada cancha y las que descansan. Toca Aplicar cuando termines.</div>';
+    h+='<div class="warn-box">Selecciona las dos jugadoras de cada pareja por ronda. Los cruces (quien juega contra quien) se arman automaticamente en el fixture.</div>';
     h+='<div class="section-card"><div class="section-hdr">Configurar parejas</div>';
     for(var ri=0;ri<5;ri++){
       var mr=MANUAL_ROUNDS[ri];
-      h+='<div class="manual-round"><div class="manual-round-title">Ronda '+(ri+1)+' - '+TIMES[ri]+'</div>'
-        +'<div class="pair-court-block"><div class="manual-court-label b">Cancha 1</div>'
+      h+='<div class="manual-round"><div class="manual-round-title">Ronda '+(ri+1)+' - '+TIMES[ri]+' - Desc: '+(mr.r1||"?")+" / "+(mr.r2||"?")+'</div>'
+        +'<div class="pair-court-block"><div class="manual-court-label b">Cancha 1 - Pareja A</div>'
         +'<div class="pair-row">'+mkSel(ri,"c1a",0,mr.c1a[0])+mkSel(ri,"c1a",1,mr.c1a[1])+'</div>'
-        +'<div style="text-align:center;font-size:10px;color:#aaa;margin:2px 0">vs</div>'
+        +'<div class="manual-court-label b" style="margin-top:8px">Cancha 1 - Pareja B</div>'
         +'<div class="pair-row">'+mkSel(ri,"c1b",0,mr.c1b[0])+mkSel(ri,"c1b",1,mr.c1b[1])+'</div></div>'
-        +'<div class="pair-court-block"><div class="manual-court-label g">Cancha 2</div>'
+        +'<div class="pair-court-block"><div class="manual-court-label g">Cancha 2 - Pareja A</div>'
         +'<div class="pair-row">'+mkSel(ri,"c2a",0,mr.c2a[0])+mkSel(ri,"c2a",1,mr.c2a[1])+'</div>'
-        +'<div style="text-align:center;font-size:10px;color:#aaa;margin:2px 0">vs</div>'
+        +'<div class="manual-court-label g" style="margin-top:8px">Cancha 2 - Pareja B</div>'
         +'<div class="pair-row">'+mkSel(ri,"c2b",0,mr.c2b[0])+mkSel(ri,"c2b",1,mr.c2b[1])+'</div></div>'
-        +'<div class="rest-sel-row"><span style="font-size:10px;font-weight:700;color:#8B5E00;margin-right:4px;align-self:center">Desc:</span>'
-        +mkRestSel(ri,0,mr.r1)+mkRestSel(ri,1,mr.r2)+'</div></div>';
+        +'</div>';
     }
     h+="</div>";
-    h+='<button class="apply-btn" onclick="applyManual()">Aplicar parejas manuales</button>';
+    h+='<button class="apply-btn" onclick="applyManual()">Aplicar al fixture</button>';
   }
   document.getElementById("pg-parejas").innerHTML=h;
 }
