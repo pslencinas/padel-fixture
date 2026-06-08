@@ -226,8 +226,22 @@ var editingAvatarIdx = -1;
 
 function loadState(){
   try{
+    // Try new key first, then migrate from old key
     var sv=localStorage.getItem("padel_ani_v3");
-    if(!sv) return;
+    if(!sv){
+      // Try old key - migrate settings only (not rounds, they'll regenerate)
+      var old=localStorage.getItem("padel_ani_v2");
+      if(old){
+        var op=JSON.parse(old);
+        if(op.players)   players=op.players;
+        if(op.positions) positions=op.positions;
+        if(op.courts)    courts=op.courts;
+        if(op.hours)     hours=op.hours;
+        if(op.history)   history=op.history;
+        // Don't migrate rounds - they'll regenerate with new format
+      }
+      return;
+    }
     var p=JSON.parse(sv);
     if(p.players)   players=p.players;
     if(p.positions) positions=p.positions;
@@ -239,7 +253,7 @@ function loadState(){
     if(p.manualPairs)     manualPairs=p.manualPairs;
     if(p.scores)          scores=p.scores;
     if(p.history)         history=p.history;
-  }catch(e){}
+  }catch(e){ console.log("loadState error:",e); }
 }
 function save(){
   try{
@@ -255,10 +269,15 @@ loadState();
 
 function gcd(a,b){return b===0?a:gcd(b,a%b);}
 
+function imul32(a,b){
+  var ah=(a>>>16)&0xffff,al=a&0xffff,bh=(b>>>16)&0xffff,bl=b&0xffff;
+  return((al*bl)+(((ah*bl+al*bh)<<16)>>>0)|0);
+}
 function seedRng(seed){
   var s=seed|0;
+  var _imul=typeof Math.imul==="function"?Math.imul:imul32;
   return function(){
-    s+=0x6D2B79F5;var t=s;t=Math.imul(t^t>>>15,t|1);t^=t+Math.imul(t^t>>>7,t|61);
+    s+=0x6D2B79F5|0;var t=s;t=_imul(t^t>>>15,t|1);t^=t+_imul(t^t>>>7,t|61);
     return((t^t>>>14)>>>0)/4294967296;
   };
 }
@@ -768,7 +787,7 @@ function computeCumStats(){
     var streak=0;
     for(var i=0;i<history.length;i++){
       var rank=history[i].ranking;
-      var pos=rank.findIndex(function(r){return r.name===p;});
+      var pos=-1;for(var rj=0;rj<rank.length;rj++){if(rank[rj].name===p){pos=rj;break;}}
       if(pos>=0&&pos<3)streak++;else break;
     }
     if(stats[p])stats[p].streak=streak;
@@ -900,11 +919,20 @@ function showTab(t){
 }
 function resetScores(){if(!confirm("Reiniciar todos los resultados?"))return;scores=[];save();render();}
 
-if(!generatedRounds||generatedRounds.length===0){
-  var result=generateSchedule(42);
-  generatedRounds=result.rounds;
+try {
+  if(!generatedRounds||generatedRounds.length===0){
+    var result=generateSchedule(42);
+    generatedRounds=result.rounds;
+  }
+  render();
+} catch(err) {
+  console.error("Init error:", err);
+  // Fallback: reset to defaults and try again
+  players=DEF_PLAYERS.slice();positions=DEF_POS.slice();avatars=DEF_AVATARS.slice();
+  courts=DEF_COURTS;hours=DEF_HOURS;scores=[];generatedRounds=[];manualPairs=[];history=[];
+  var result=generateSchedule(42);generatedRounds=result.rounds;
+  render();
 }
-render();
 </script>
 </body>
 </html>
