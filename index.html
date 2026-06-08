@@ -13,42 +13,39 @@ body{font-family:-apple-system,sans-serif;background:#F0F4F8;color:#1A2733;min-h
 .hdr{background:#1A3A5C;color:#fff;padding:16px 16px 12px;text-align:center;position:sticky;top:0;z-index:99;box-shadow:0 2px 10px rgba(0,0,0,.25)}
 .hdr h1{font-size:19px;font-weight:700}
 .hdr p{font-size:11px;opacity:.7;margin-top:2px}
-.tabs{display:flex;background:#1A3A5C;padding:0 8px 12px;gap:4px}
-.tab{flex:1;padding:7px 2px;border-radius:20px;border:none;font-size:10px;font-weight:600;cursor:pointer;background:rgba(255,255,255,.15);color:rgba(255,255,255,.7);-webkit-appearance:none}
+.tabs{display:flex;background:#1A3A5C;padding:0 6px 12px;gap:3px;overflow-x:auto}
+.tab{flex:1;min-width:50px;padding:7px 2px;border-radius:20px;border:none;font-size:10px;font-weight:600;cursor:pointer;background:rgba(255,255,255,.15);color:rgba(255,255,255,.7);-webkit-appearance:none;white-space:nowrap}
 .tab.on{background:#fff;color:#1A3A5C}
 .pg{padding:14px;max-width:480px;margin:0 auto;padding-bottom:30px}
-/* progress */
 .prog-wrap{background:#fff;border-radius:14px;padding:13px;margin-bottom:11px;box-shadow:0 2px 10px rgba(0,0,0,.09)}
 .prog-lbl{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:#1A3A5C;margin-bottom:7px}
 .prog-bar{height:8px;background:#E8EDF2;border-radius:4px;overflow:hidden}
 .prog-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,#2E75B6,#276836);transition:width .4s}
-/* cards */
 .card{background:#fff;border-radius:14px;box-shadow:0 2px 10px rgba(0,0,0,.09);margin-bottom:11px;overflow:hidden}
 .rhdr{display:flex;align-items:center;justify-content:space-between;padding:9px 13px;background:#1A3A5C;color:#fff;flex-wrap:wrap;gap:4px}
 .rnum{font-size:14px;font-weight:700}
 .rtime{font-size:11px;opacity:.75;background:rgba(255,255,255,.15);padding:2px 7px;border-radius:10px}
-.rbadge{font-size:11px;background:#FFF2CC;color:#8B5E00;padding:2px 8px;border-radius:20px;font-weight:600}
-/* court */
+.rbadge{font-size:11px;background:#FFF2CC;color:#8B5E00;padding:2px 8px;border-radius:20px;font-weight:600;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .court{padding:11px 13px}
 .court.sep{border-bottom:1px solid #EEF2F7}
 .clbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:7px}
-.clbl.b{color:#2E75B6}.clbl.g{color:#276836}
+.clbl.b{color:#2E75B6}.clbl.g{color:#276836}.clbl.v{color:#7B3FA0}
 .mrow{display:flex;align-items:center;gap:5px}
 .team{flex:1;text-align:center;font-size:12px;font-weight:600;line-height:1.4;color:#1A2733}
-.team.wb{color:#2E75B6;font-weight:800}.team.wg{color:#276836;font-weight:800}
+.team.wb{color:#2E75B6;font-weight:800}.team.wg{color:#276836;font-weight:800}.team.wv{color:#7B3FA0;font-weight:800}
 .wbadge{display:block;font-size:9px;font-weight:700;margin-top:1px}
-.wbadge.b{color:#2E75B6}.wbadge.g{color:#276836}
+.wbadge.b{color:#2E75B6}.wbadge.g{color:#276836}.wbadge.v{color:#7B3FA0}
 .sarea{display:flex;align-items:center;gap:3px;flex-shrink:0}
 .sbtn{width:36px;height:36px;border-radius:50%;border:2px solid #E8EDF2;font-size:14px;font-weight:700;cursor:pointer;background:#fff;color:#6B7A8D;-webkit-appearance:none}
 .sbtn.ab{background:#2E75B6;color:#fff;border-color:#2E75B6}
 .sbtn.ag{background:#276836;color:#fff;border-color:#276836}
+.sbtn.av{background:#7B3FA0;color:#fff;border-color:#7B3FA0}
 .stxt{font-size:11px;font-weight:800;min-width:20px;text-align:center;color:#1A3A5C}
 .score-row{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:9px;padding-top:9px;border-top:1px dashed #E8EDF2}
 .score-lbl{font-size:10px;color:#6B7A8D;font-weight:600;flex:1;text-align:center}
 .score-inp{width:44px;height:34px;border:2px solid #E8EDF2;border-radius:8px;text-align:center;font-size:16px;font-weight:700;color:#1A3A5C;background:#F8FAFC;-webkit-appearance:none}
 .score-inp:focus{outline:none;border-color:#2E75B6}
 .score-dash{font-size:18px;font-weight:700;color:#6B7A8D}
-/* ranking */
 .rank-card{background:#fff;border-radius:14px;box-shadow:0 2px 10px rgba(0,0,0,.09);overflow:hidden;margin-bottom:11px}
 .rank-hdr{background:#1A3A5C;color:#fff;padding:11px 15px;font-size:14px;font-weight:700}
 .rank-row{display:flex;align-items:center;padding:10px 15px;border-bottom:1px solid #EEF2F7;gap:9px}
@@ -59,56 +56,70 @@ body{font-family:-apple-system,sans-serif;background:#F0F4F8;color:#1A2733;min-h
 .rbar{height:4px;background:#E8EDF2;border-radius:3px;margin-top:5px;overflow:hidden}
 .rbar-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,#2E75B6,#5BA4E0);transition:width .5s}
 .rwins{text-align:right}.rnum-big{font-size:20px;font-weight:800;color:#1A3A5C;line-height:1}.rlbl{font-size:10px;color:#6B7A8D}
-/* cruces */
 .cruces-card{background:#fff;border-radius:14px;box-shadow:0 2px 10px rgba(0,0,0,.09);overflow:hidden;margin-bottom:11px}
 .cruces-hdr{background:#1A3A5C;color:#fff;padding:11px 15px;font-size:14px;font-weight:700}
 .cruce-row{padding:10px 14px;border-bottom:1px solid #EEF2F7}
 .cruce-row:last-child{border-bottom:none}
-.cruce-round{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:#6B7A8D;margin-bottom:6px}
-.cruce-match{display:flex;align-items:center;gap:6px;margin-bottom:4px}
+.cruce-round{font-size:10px;font-weight:700;text-transform:uppercase;color:#6B7A8D;margin-bottom:5px}
+.cruce-match{display:flex;align-items:center;gap:6px;margin-bottom:3px}
 .cruce-court{font-size:9px;font-weight:700;padding:1px 5px;border-radius:8px;flex-shrink:0}
-.cruce-court.b{background:#D6E8FA;color:#2E75B6}.cruce-court.g{background:#D5F0E0;color:#276836}
+.cruce-court.b{background:#D6E8FA;color:#2E75B6}.cruce-court.g{background:#D5F0E0;color:#276836}.cruce-court.v{background:#EDE0FF;color:#7B3FA0}
 .cruce-teams{font-size:12px;font-weight:600;color:#1A2733;flex:1}
-.cruce-rest{font-size:10px;color:#8B5E00;background:#FFF2CC;padding:2px 7px;border-radius:10px;margin-top:5px;display:inline-block}
+.cruce-rest{font-size:10px;color:#8B5E00;background:#FFF2CC;padding:2px 7px;border-radius:10px;margin-top:4px;display:inline-block}
 .cruce-result{font-size:11px;font-weight:700;flex-shrink:0}
-.cruce-result.b{color:#2E75B6}.cruce-result.g{color:#276836}
-/* parejas */
-.mode-toggle{display:flex;background:#E8EDF2;border-radius:12px;padding:3px;margin-bottom:14px;gap:3px}
-.mode-btn{flex:1;padding:9px 6px;border-radius:9px;border:none;font-size:13px;font-weight:600;cursor:pointer;background:transparent;color:#6B7A8D;-webkit-appearance:none;transition:all .2s}
-.mode-btn.on{background:#fff;color:#1A3A5C;box-shadow:0 1px 4px rgba(0,0,0,.12)}
 .section-card{background:#fff;border-radius:14px;box-shadow:0 2px 10px rgba(0,0,0,.09);margin-bottom:11px;overflow:hidden}
 .section-hdr{background:#1A3A5C;color:#fff;padding:10px 14px;font-size:13px;font-weight:700}
-.pair-row-manual{display:flex;align-items:center;gap:8px;padding:11px 14px;border-bottom:1px solid #EEF2F7}
-.pair-row-manual:last-child{border-bottom:none}
-.pair-num{width:24px;height:24px;border-radius:50%;background:#1A3A5C;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;flex-shrink:0}
-.pair-sel{flex:1;height:34px;border:2px solid #E8EDF2;border-radius:8px;font-size:13px;font-weight:600;color:#1A3A5C;background:#F8FAFC;padding:0 8px;-webkit-appearance:none}
-.pair-plus{font-size:16px;color:#6B7A8D;font-weight:700;flex-shrink:0}
-/* jugadoras */
-.player-row{display:flex;align-items:center;padding:11px 14px;border-bottom:1px solid #EEF2F7;gap:10px}
-.player-row:last-child{border-bottom:none}
-.player-num{width:26px;height:26px;border-radius:50%;background:#E8EDF2;color:#6B7A8D;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0}
-.player-name-inp{flex:1;height:34px;border:2px solid #E8EDF2;border-radius:8px;font-size:14px;font-weight:600;color:#1A3A5C;background:#F8FAFC;padding:0 10px;-webkit-appearance:none}
-.player-name-inp:focus{outline:none;border-color:#2E75B6}
-.pos-toggle{display:flex;gap:4px;flex-shrink:0}
-.pos-btn{padding:5px 8px;border-radius:8px;border:2px solid #E8EDF2;font-size:10px;font-weight:700;cursor:pointer;background:#fff;color:#6B7A8D;-webkit-appearance:none}
-.pos-btn.on-d{background:#D6E8FA;color:#2E75B6;border-color:#2E75B6}
-.pos-btn.on-r{background:#D5F0E0;color:#276836;border-color:#276836}
-.pos-btn.on-a{background:#F0E6FF;color:#6B3FA0;border-color:#6B3FA0}
-/* misc */
-.info-box{background:#EBF3FB;border-radius:10px;padding:10px 13px;margin-bottom:11px;font-size:11px;color:#1A3A5C;line-height:1.5}
+.info-box{background:#EBF3FB;border-radius:10px;padding:10px 13px;margin-bottom:11px;font-size:11px;color:#1A3A5C;line-height:1.6}
 .ok-box{background:#D5F0E0;border-radius:10px;padding:9px 12px;margin-bottom:10px;font-size:11px;color:#276836;line-height:1.5}
 .warn-box{background:#FFF2CC;border-radius:10px;padding:9px 12px;margin-bottom:10px;font-size:11px;color:#8B5E00;line-height:1.5}
+.err-box{background:#FDECEA;border-radius:10px;padding:9px 12px;margin-bottom:10px;font-size:11px;color:#C0392B;line-height:1.5}
 .apply-btn{width:100%;padding:13px;border-radius:14px;border:none;background:#1A3A5C;color:#fff;font-size:14px;font-weight:700;cursor:pointer;margin-top:4px;-webkit-appearance:none}
 .apply-btn.blue{background:#2E75B6}
-.reset-btn{width:100%;padding:13px;border-radius:14px;border:2px solid #C0392B;background:#fff;color:#C0392B;font-size:13px;font-weight:700;cursor:pointer;margin-top:2px;-webkit-appearance:none}
+.apply-btn.green{background:#276836}
+.reset-btn{width:100%;padding:13px;border-radius:14px;border:2px solid #C0392B;background:#fff;color:#C0392B;font-size:13px;font-weight:700;cursor:pointer;margin-top:6px;-webkit-appearance:none}
 .empty{text-align:center;padding:36px 20px;color:#6B7A8D}
 .champ{background:linear-gradient(135deg,#FFD700,#FFA500);padding:18px;text-align:center;border-radius:14px;margin-bottom:11px;box-shadow:0 2px 10px rgba(0,0,0,.1)}
+/* settings */
+.setting-row{display:flex;align-items:center;padding:13px 15px;border-bottom:1px solid #EEF2F7;gap:12px}
+.setting-row:last-child{border-bottom:none}
+.setting-label{flex:1}
+.setting-title{font-size:14px;font-weight:600;color:#1A2733}
+.setting-sub{font-size:11px;color:#6B7A8D;margin-top:2px}
+.stepper{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.step-btn{width:34px;height:34px;border-radius:50%;border:2px solid #E8EDF2;background:#fff;font-size:20px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#1A3A5C;-webkit-appearance:none;line-height:1}
+.step-val{font-size:18px;font-weight:800;color:#1A3A5C;min-width:28px;text-align:center}
+.time-sel{height:36px;border:2px solid #E8EDF2;border-radius:8px;font-size:14px;font-weight:600;color:#1A3A5C;background:#F8FAFC;padding:0 8px;-webkit-appearance:none}
+.schedule-preview{background:#F8FAFC;border-radius:10px;padding:10px 12px;margin-top:4px;font-size:11px;color:#1A3A5C;line-height:1.7}
+/* jugadoras ABM */
+.player-row{display:flex;align-items:center;padding:10px 14px;border-bottom:1px solid #EEF2F7;gap:8px}
+.player-row:last-child{border-bottom:none}
+.player-num{width:24px;height:24px;border-radius:50%;background:#E8EDF2;color:#6B7A8D;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0}
+.player-name-inp{flex:1;height:34px;border:2px solid #E8EDF2;border-radius:8px;font-size:13px;font-weight:600;color:#1A3A5C;background:#F8FAFC;padding:0 8px;-webkit-appearance:none;min-width:0}
+.player-name-inp:focus{outline:none;border-color:#2E75B6}
+.pos-toggle{display:flex;gap:3px;flex-shrink:0}
+.pos-btn{padding:4px 6px;border-radius:7px;border:2px solid #E8EDF2;font-size:10px;font-weight:700;cursor:pointer;background:#fff;color:#6B7A8D;-webkit-appearance:none}
+.pos-btn.on-d{background:#D6E8FA;color:#2E75B6;border-color:#2E75B6}
+.pos-btn.on-r{background:#D5F0E0;color:#276836;border-color:#276836}
+.pos-btn.on-a{background:#EDE0FF;color:#7B3FA0;border-color:#7B3FA0}
+.del-btn{width:30px;height:30px;border-radius:50%;border:none;background:#FDECEA;color:#C0392B;font-size:16px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;-webkit-appearance:none}
+.add-player-row{display:flex;align-items:center;gap:8px;padding:10px 14px}
+.add-inp{flex:1;height:36px;border:2px solid #2E75B6;border-radius:8px;font-size:13px;font-weight:600;color:#1A3A5C;background:#fff;padding:0 10px;-webkit-appearance:none}
+.add-inp:focus{outline:none}
+.add-btn{height:36px;padding:0 14px;border-radius:8px;border:none;background:#2E75B6;color:#fff;font-size:13px;font-weight:700;cursor:pointer;flex-shrink:0;-webkit-appearance:none}
+/* parejas */
+.mode-toggle{display:flex;background:#E8EDF2;border-radius:12px;padding:3px;margin-bottom:14px;gap:3px}
+.mode-btn{flex:1;padding:9px 6px;border-radius:9px;border:none;font-size:13px;font-weight:600;cursor:pointer;background:transparent;color:#6B7A8D;-webkit-appearance:none}
+.mode-btn.on{background:#fff;color:#1A3A5C;box-shadow:0 1px 4px rgba(0,0,0,.12)}
+.pair-row-m{display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid #EEF2F7}
+.pair-row-m:last-child{border-bottom:none}
+.pair-num{width:24px;height:24px;border-radius:50%;background:#1A3A5C;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;flex-shrink:0}
+.pair-sel{flex:1;height:34px;border:2px solid #E8EDF2;border-radius:8px;font-size:13px;font-weight:600;color:#1A3A5C;background:#F8FAFC;padding:0 8px;-webkit-appearance:none;min-width:0}
 </style>
 </head>
 <body>
 <div class="hdr">
   <h1>Padel Ani</h1>
-  <p id="hdr-sub">2 canchas - 10 chicas - 5 rondas - 4 partidos c/u</p>
+  <p id="hdr-sub">Cargando...</p>
 </div>
 <div class="tabs">
   <button class="tab on"  id="t-fix"  onclick="showTab('fixture')">Fixture</button>
@@ -116,127 +127,317 @@ body{font-family:-apple-system,sans-serif;background:#F0F4F8;color:#1A2733;min-h
   <button class="tab"     id="t-cruz" onclick="showTab('cruces')">Cruces</button>
   <button class="tab"     id="t-par"  onclick="showTab('parejas')">Parejas</button>
   <button class="tab"     id="t-jug"  onclick="showTab('jugadoras')">Jugadoras</button>
+  <button class="tab"     id="t-set"  onclick="showTab('settings')">Ajustes</button>
 </div>
 <div id="pg-fixture"   class="pg"></div>
 <div id="pg-ranking"   class="pg" style="display:none"></div>
 <div id="pg-cruces"    class="pg" style="display:none"></div>
 <div id="pg-parejas"   class="pg" style="display:none"></div>
 <div id="pg-jugadoras" class="pg" style="display:none"></div>
+<div id="pg-settings"  class="pg" style="display:none"></div>
 
 <script>
-// ── DATA ──────────────────────────────────────────────────────────────────────
-var DEFAULT_PLAYERS = ["Caro","Maru","Vale","Ani","Flor","Jime","Ceci","Dani","Maga","Ale"];
-var DEFAULT_POS     = ["D","D","R","R","B","R","R","D","D","D"];
-// pos: D=Drive, R=Reves, B=Ambas
+// ── DEFAULTS ──────────────────────────────────────────────────────────────────
+var DEF_PLAYERS  = ["Caro","Maru","Vale","Ani","Flor","Jime","Ceci","Dani","Maga","Ale"];
+var DEF_POS      = ["D","D","R","R","B","R","R","D","D","D"];
+var DEF_COURTS   = 2;
+var DEF_HOURS    = 2.0;
+var HOUR_OPTIONS = [0.5,1.0,1.5,2.0,2.5,3.0];
 
-var TIMES = ["9:30","9:54","10:18","10:42","11:06"];
-
-// Optimal matchup schedule for 5 pairs (P0..P4):
-// Each pair plays 4 rounds, rests 1, faces every other pair exactly once
-var MATCHUP = [
-  {rest:0, c1:[1,2], c2:[3,4]},
-  {rest:1, c1:[0,3], c2:[2,4]},
-  {rest:2, c1:[0,4], c2:[1,3]},
-  {rest:3, c1:[0,2], c2:[1,4]},
-  {rest:4, c1:[0,1], c2:[2,3]}
-];
+// Court colors
+var COURT_COLS = ["b","g","v","b2"];
 
 // ── STATE ────────────────────────────────────────────────────────────────────
-var players = DEFAULT_PLAYERS.slice();
-var positions = DEFAULT_POS.slice();
-var activeMode = "random";  // "random" or "manual"
+var players   = DEF_PLAYERS.slice();
+var positions = DEF_POS.slice();
+var courts    = DEF_COURTS;
+var hours     = DEF_HOURS;
+var activeMode = "random";
+var generatedRounds = [];  // [{courts:[[tA,tB],[tA,tB],...], resting:[idx,...]}, ...]
+var manualPairs = [];      // [[idx,idx], ...] one per "pair slot"
+var scores = [];           // [round][court] = {winner,sa,sb}
+var pairsMode = "random";
 
-// Random mode: full player-level rounds (same as before)
-var RANDOM_ROUNDS = [
-  {c1a:["Dani","Flor"],c1b:["Maga","Vale"],c2a:["Ceci","Jime"],c2b:["Ale","Ani"],r1:"Caro",r2:"Maru"},
-  {c1a:["Jime","Maga"],c1b:["Ceci","Flor"],c2a:["Maru","Ale"],c2b:["Dani","Caro"],r1:"Vale",r2:"Ani"},
-  {c1a:["Dani","Maru"],c1b:["Caro","Ale"],c2a:["Ceci","Vale"],c2b:["Maga","Ani"],r1:"Flor",r2:"Jime"},
-  {c1a:["Maga","Flor"],c1b:["Jime","Ale"],c2a:["Vale","Maru"],c2b:["Caro","Ani"],r1:"Ceci",r2:"Dani"},
-  {c1a:["Dani","Ani"],c1b:["Vale","Jime"],c2a:["Caro","Flor"],c2b:["Ceci","Maru"],r1:"Maga",r2:"Ale"}
-];
-
-// Manual mode: 5 fixed pairs defined by user (pair = [playerIdx, playerIdx])
-var manualPairs = [[0,1],[2,3],[4,5],[6,7],[8,9]];
-
-// scores[ri][ci] = {winner:0/1/2, sa:"", sb:""}
-var scores = Array(5).fill(null).map(function(){return [{winner:0,sa:"",sb:""},{winner:0,sa:"",sb:""}];});
-
-// ── PERSISTENCE ──────────────────────────────────────────────────────────────
+// ── LOAD / SAVE ───────────────────────────────────────────────────────────────
 function loadState(){
   try{
-    var sv = localStorage.getItem("pf5");
+    var sv = localStorage.getItem("padel_ani_v2");
     if(!sv) return;
     var p = JSON.parse(sv);
-    if(p.players) players = p.players;
+    if(p.players)   players   = p.players;
     if(p.positions) positions = p.positions;
-    if(p.mode) activeMode = p.mode;
-    if(p.manualPairs) manualPairs = p.manualPairs;
-    if(p.scores) scores = p.scores;
+    if(p.courts)    courts    = p.courts;
+    if(p.hours)     hours     = p.hours;
+    if(p.activeMode) activeMode = p.activeMode;
+    if(p.generatedRounds) generatedRounds = p.generatedRounds;
+    if(p.manualPairs)     manualPairs     = p.manualPairs;
+    if(p.scores)          scores          = p.scores;
   }catch(e){}
 }
 function save(){
   try{
-    localStorage.setItem("pf5",JSON.stringify({
-      players:players,positions:positions,mode:activeMode,
-      manualPairs:manualPairs,scores:scores
+    localStorage.setItem("padel_ani_v2", JSON.stringify({
+      players:players, positions:positions, courts:courts, hours:hours,
+      activeMode:activeMode, generatedRounds:generatedRounds,
+      manualPairs:manualPairs, scores:scores
     }));
   }catch(e){}
 }
 loadState();
 
-// ── ROUNDS BUILDER ────────────────────────────────────────────────────────────
-function getRounds(){
-  if(activeMode === "random") return RANDOM_ROUNDS;
-  // Build rounds from manualPairs + MATCHUP
-  return MATCHUP.map(function(m){
-    var pA = manualPairs[m.c1[0]], pB = manualPairs[m.c1[1]];
-    var pC = manualPairs[m.c2[0]], pD = manualPairs[m.c2[1]];
-    var restPair = manualPairs[m.rest];
-    return {
-      c1a:[players[pA[0]],players[pA[1]]],
-      c1b:[players[pB[0]],players[pB[1]]],
-      c2a:[players[pC[0]],players[pC[1]]],
-      c2b:[players[pD[0]],players[pD[1]]],
-      r1: players[restPair[0]],
-      r2: players[restPair[1]]
-    };
+// ── SCHEDULE GENERATOR ────────────────────────────────────────────────────────
+function gcd(a,b){ return b===0?a:gcd(b,a%b); }
+
+function shuffle(arr){
+  for(var i=arr.length-1;i>0;i--){
+    var j=Math.floor(Math.random()*(i+1));
+    var t=arr[i];arr[i]=arr[j];arr[j]=t;
+  }
+}
+
+function generateSchedule(seed){
+  var N = players.length;
+  var C = courts;
+  var playingPerRound = 4*C;
+  if(playingPerRound >= N) playingPerRound = Math.floor(N/4)*4;
+  var actualC = playingPerRound/4;
+  var restingPerRound = N - playingPerRound;
+
+  // num rounds
+  var g = gcd(N, playingPerRound);
+  var numRounds = N/g;
+
+  // build rotation order
+  var idxs = [];
+  for(var i=0;i<N;i++) idxs.push(i);
+  // use seed for determinism
+  var rng = seed !== undefined ? seedRng(seed) : Math.random.bind(Math);
+  for(var i=idxs.length-1;i>0;i--){
+    var j=Math.floor(rng()*(i+1));
+    var t=idxs[i];idxs[i]=idxs[j];idxs[j]=t;
+  }
+
+  var restSchedule = [];
+  for(var r=0;r<numRounds;r++){
+    var resting = [];
+    for(var k=0;k<restingPerRound;k++){
+      resting.push(idxs[(r*restingPerRound+k)%N]);
+    }
+    restSchedule.push(resting);
+  }
+
+  // assign courts minimizing pair repeats
+  var pc = {};
+  function pk(a,b){return Math.min(a,b)+","+Math.max(a,b);}
+  function getPC(a,b){return pc[pk(a,b)]||0;}
+  function addPC(a,b){var k=pk(a,b);pc[k]=(pc[k]||0)+1;}
+  function scorePairing(teams){
+    var s=0;
+    for(var i=0;i<teams.length;i++){
+      var t=teams[i];
+      s+=Math.pow(getPC(t[0],t[1])+1,2);
+    }
+    return s;
+  }
+
+  var rounds = [];
+  for(var ri=0;ri<numRounds;ri++){
+    var resting = restSchedule[ri];
+    var playing = [];
+    for(var i=0;i<N;i++) if(resting.indexOf(i)<0) playing.push(i);
+
+    var bestCourts = null, bestScore = 999999;
+    for(var attempt=0;attempt<3000;attempt++){
+      // shuffle playing
+      for(var i=playing.length-1;i>0;i--){
+        var j=Math.floor(rng()*(i+1));
+        var t=playing[i];playing[i]=playing[j];playing[j]=t;
+      }
+      var ca = [], score = 0;
+      for(var ci=0;ci<actualC;ci++){
+        var g4 = playing.slice(ci*4,ci*4+4);
+        var opts = [
+          [[g4[0],g4[1]],[g4[2],g4[3]]],
+          [[g4[0],g4[2]],[g4[1],g4[3]]],
+          [[g4[0],g4[3]],[g4[1],g4[2]]]
+        ];
+        var best = opts[0], bs = scorePairing(opts[0]);
+        for(var oi=1;oi<3;oi++){var s=scorePairing(opts[oi]);if(s<bs){bs=s;best=opts[oi];}}
+        ca.push(best); score+=bs;
+      }
+      if(score<bestScore){bestScore=score;bestCourts=ca.map(function(c){return c.slice();});}
+    }
+    rounds.push({courts:bestCourts, resting:resting});
+    for(var ci=0;ci<actualC;ci++){
+      for(var ti=0;ti<bestCourts[ci].length;ti++){
+        var t=bestCourts[ci][ti];
+        addPC(t[0],t[1]);
+      }
+    }
+  }
+  return rounds;
+}
+
+// Simple seeded RNG (mulberry32)
+function seedRng(seed){
+  var s = seed|0;
+  return function(){
+    s+=0x6D2B79F5;
+    var t=s;t=Math.imul(t^t>>>15,t|1);t^=t+Math.imul(t^t>>>7,t|61);
+    return ((t^t>>>14)>>>0)/4294967296;
+  };
+}
+
+function buildManualRounds(){
+  // Use MATCHUP logic: optimal fixed schedule for numPairs pairs
+  var numPairs = manualPairs.length;
+  var C = courts;
+  // pairs per round that play = 2*C, one pair rests... but only if numPairs = 2C+1
+  // General: same algorithm but at pair level
+  var playingPairs = 2*C;
+  if(playingPairs >= numPairs) playingPairs = numPairs - (numPairs%2===0?2:1);
+  var restingPairs = numPairs - playingPairs;
+  var g2 = gcd(numPairs, playingPairs);
+  var numRounds = numPairs/g2;
+  var rng = seedRng(42);
+
+  // rotation
+  var pairIdxs = [];
+  for(var i=0;i<numPairs;i++) pairIdxs.push(i);
+
+  var pc = {};
+  function pk2(a,b){return Math.min(a,b)+","+Math.max(a,b);}
+  function getPC2(a,b){return pc[pk2(a,b)]||0;}
+  function addPC2(a,b){var k=pk2(a,b);pc[k]=(pc[k]||0)+1;}
+
+  var rounds = [];
+  for(var r=0;r<numRounds;r++){
+    var restPairs = [];
+    for(var k=0;k<restingPairs;k++) restPairs.push(pairIdxs[(r*restingPairs+k)%numPairs]);
+    var playingPairIdxs = pairIdxs.filter(function(i){return restPairs.indexOf(i)<0;});
+
+    // assign to courts
+    var bestCourts = null, bestScore = 999999;
+    for(var attempt=0;attempt<2000;attempt++){
+      for(var i=playingPairIdxs.length-1;i>0;i--){
+        var j=Math.floor(rng()*(i+1));
+        var t=playingPairIdxs[i];playingPairIdxs[i]=playingPairIdxs[j];playingPairIdxs[j]=t;
+      }
+      var ca=[],score=0;
+      for(var ci=0;ci<Math.min(courts,playingPairIdxs.length/2);ci++){
+        var pA=playingPairIdxs[ci*2], pB=playingPairIdxs[ci*2+1];
+        ca.push([pA,pB]);
+        score+=Math.pow(getPC2(pA,pB)+1,2);
+      }
+      if(score<bestScore){bestScore=score;bestCourts=ca.slice();}
+    }
+
+    // convert pair indices to player rounds format
+    var courtRounds = bestCourts.map(function(c){
+      var pA=manualPairs[c[0]], pB=manualPairs[c[1]];
+      return [[pA[0],pA[1]],[pB[0],pB[1]]];
+    });
+    var restingPlayers = [];
+    restPairs.forEach(function(pi){
+      manualPairs[pi].forEach(function(idx){restingPlayers.push(idx);});
+    });
+    rounds.push({courts:courtRounds, resting:restingPlayers});
+
+    bestCourts.forEach(function(c){addPC2(c[0],c[1]);});
+  }
+  return rounds;
+}
+
+// ── DERIVED STATE ─────────────────────────────────────────────────────────────
+function getActiveRounds(){
+  if(activeMode==="manual") return buildManualRounds();
+  return generatedRounds;
+}
+
+function computeTimes(){
+  var rounds = getActiveRounds();
+  var numRounds = rounds.length;
+  var minPerRound = Math.round(hours*60/numRounds);
+  var startH=9, startM=30;
+  var times=[];
+  for(var i=0;i<numRounds;i++){
+    var totalMin = startH*60+startM + i*minPerRound;
+    var h=Math.floor(totalMin/60), m=totalMin%60;
+    times.push(h+":"+(m<10?"0"+m:m));
+  }
+  return {times:times, minPerRound:minPerRound};
+}
+
+function initScores(numRounds, numCourts){
+  var s=[];
+  for(var r=0;r<numRounds;r++){
+    var rc=[];
+    for(var c=0;c<numCourts;c++) rc.push({winner:0,sa:"",sb:""});
+    s.push(rc);
+  }
+  return s;
+}
+
+function ensureScores(){
+  var rounds=getActiveRounds();
+  if(!scores||scores.length!==rounds.length){
+    scores=initScores(rounds.length, rounds.length>0?rounds[0].courts.length:courts);
+    return;
+  }
+  rounds.forEach(function(r,ri){
+    if(!scores[ri]||scores[ri].length!==r.courts.length){
+      scores[ri]=[];
+      r.courts.forEach(function(){scores[ri].push({winner:0,sa:"",sb:""});});
+    }
   });
 }
 
-// ── SCORE HELPERS ─────────────────────────────────────────────────────────────
-function toggleWinner(ri,ci,w){
-  scores[ri][ci].winner = scores[ri][ci].winner===w ? 0 : w;
-  save(); render();
+function totalGames(){
+  var rounds=getActiveRounds();
+  var t=0;
+  rounds.forEach(function(r){t+=r.courts.length;});
+  return t;
 }
-function updateScore(ri,ci,side,val){
-  if(side===0) scores[ri][ci].sa=val; else scores[ri][ci].sb=val;
-  var sa=parseInt(scores[ri][ci].sa), sb=parseInt(scores[ri][ci].sb);
-  if(!isNaN(sa)&&!isNaN(sb)&&sa!==sb) scores[ri][ci].winner=sa>sb?1:2;
-  save(); renderRanking(); renderCruces();
-}
+
 function done(){
+  ensureScores();
   var n=0;
-  scores.forEach(function(r){r.forEach(function(c){if(c.winner!==0)n++;});});
+  scores.forEach(function(r){r.forEach(function(c){if(c&&c.winner!==0)n++;});});
   return n;
 }
 
-// ── RANKING DATA ──────────────────────────────────────────────────────────────
+// ── SCORE ACTIONS ─────────────────────────────────────────────────────────────
+function toggleWinner(ri,ci,w){
+  ensureScores();
+  scores[ri][ci].winner=scores[ri][ci].winner===w?0:w;
+  save();render();
+}
+function updateScore(ri,ci,side,val){
+  ensureScores();
+  if(side===0) scores[ri][ci].sa=val; else scores[ri][ci].sb=val;
+  var sa=parseInt(scores[ri][ci].sa), sb=parseInt(scores[ri][ci].sb);
+  if(!isNaN(sa)&&!isNaN(sb)&&sa!==sb) scores[ri][ci].winner=sa>sb?1:2;
+  save();renderRanking();renderCruces();
+}
+
+// ── RANKING ───────────────────────────────────────────────────────────────────
 function getRanking(){
-  var rounds = getRounds();
-  var st = {};
+  ensureScores();
+  var rounds=getActiveRounds();
+  var st={};
   players.forEach(function(p){st[p]={wins:0,played:0,rests:0,gf:0,gc:0};});
   rounds.forEach(function(round,ri){
-    if(round.r1&&st[round.r1]) st[round.r1].rests++;
-    if(round.r2&&st[round.r2]) st[round.r2].rests++;
-    [[round.c1a,round.c1b,0],[round.c2a,round.c2b,1]].forEach(function(x){
-      var tA=x[0],tB=x[1],ci=x[2],sc=scores[ri][ci];
+    round.resting.forEach(function(idx){if(players[idx]&&st[players[idx]])st[players[idx]].rests++;});
+    round.courts.forEach(function(court,ci){
+      var tA=court[0],tB=court[1];
+      var sc=(scores[ri]&&scores[ri][ci])||{winner:0,sa:"",sb:""};
       var res=sc.winner, sa=parseInt(sc.sa)||0, sb=parseInt(sc.sb)||0;
       if(res!==0){
-        tA.forEach(function(p){if(st[p]){st[p].played++;st[p].gf+=sa;st[p].gc+=sb;}});
-        tB.forEach(function(p){if(st[p]){st[p].played++;st[p].gf+=sb;st[p].gc+=sa;}});
+        tA.forEach(function(idx){var p=players[idx];if(p&&st[p]){st[p].played++;st[p].gf+=sa;st[p].gc+=sb;}});
+        tB.forEach(function(idx){var p=players[idx];if(p&&st[p]){st[p].played++;st[p].gf+=sb;st[p].gc+=sa;}});
       }
-      if(res===1) tA.forEach(function(p){if(st[p])st[p].wins++;});
-      if(res===2) tB.forEach(function(p){if(st[p])st[p].wins++;});
+      if(res===1) tA.forEach(function(idx){var p=players[idx];if(p&&st[p])st[p].wins++;});
+      if(res===2) tB.forEach(function(idx){var p=players[idx];if(p&&st[p])st[p].wins++;});
     });
   });
   return players.map(function(p){
@@ -245,79 +446,99 @@ function getRanking(){
   }).sort(function(a,b){return b.wins-a.wins||b.diff-a.diff||b.gf-a.gf;});
 }
 
-// ── RENDER FIXTURE ────────────────────────────────────────────────────────────
-function renderFixture(){
-  var d=done(), pct=Math.round(d/10*100);
-  var rounds=getRounds();
-  var modeTag=" ["+( activeMode==="random"?"Random":"Manual")+"]";
-  var h='<div class="prog-wrap"><div class="prog-lbl"><span>Partidos jugados'+modeTag+'</span><span>'+d+' / 10</span></div>'
-    +'<div class="prog-bar"><div class="prog-fill" style="width:'+pct+'%"></div></div></div>';
-  rounds.forEach(function(round,ri){
-    h+='<div class="card">'
-      +'<div class="rhdr"><span class="rnum">Ronda '+(ri+1)+'</span>'
-      +'<span class="rtime">'+TIMES[ri]+'</span>'
-      +'<span class="rbadge">Desc: '+round.r1+' / '+round.r2+'</span></div>'
-      +makeCourt(ri,0,round.c1a,round.c1b,false)
-      +makeCourt(ri,1,round.c2a,round.c2b,true)
-      +'</div>';
-  });
-  h+='<button class="reset-btn" onclick="resetAll()">Reiniciar resultados</button>';
-  document.getElementById("pg-fixture").innerHTML=h;
+function posLabel(idx){
+  var p=positions[idx]||"D";
+  return p==="D"?"Drive":p==="R"?"Reves":"D+R";
 }
 
-function makeCourt(ri,ci,tA,tB,green){
-  var sc=scores[ri][ci], res=sc.winner;
-  var aW=res===1, bW=res===2, col=green?"g":"b";
+// ── RENDER FIXTURE ────────────────────────────────────────────────────────────
+function renderFixture(){
+  ensureScores();
+  var rounds=getActiveRounds();
+  if(rounds.length===0){
+    document.getElementById("pg-fixture").innerHTML='<div class="empty"><p style="font-size:32px;margin-bottom:10px">&#9881;</p><p>Configura el fixture en <strong>Ajustes</strong></p></div>';
+    return;
+  }
+  var d=done(), total=totalGames(), pct=total>0?Math.round(d/total*100):0;
+  var tdata=computeTimes();
+  var modeTag=" ["+(activeMode==="random"?"Random":"Manual")+"]";
+  var h='<div class="prog-wrap"><div class="prog-lbl"><span>Partidos'+modeTag+'</span><span>'+d+' / '+total+'</span></div>'
+    +'<div class="prog-bar"><div class="prog-fill" style="width:'+pct+'%"></div></div></div>';
+  rounds.forEach(function(round,ri){
+    var restNames=round.resting.map(function(i){return players[i]||"?";}).join(" / ");
+    h+='<div class="card">'
+      +'<div class="rhdr"><span class="rnum">Ronda '+(ri+1)+'</span>'
+      +'<span class="rtime">'+tdata.times[ri]+'</span>'
+      +(restNames?'<span class="rbadge">Desc: '+restNames+'</span>':"")
+      +'</div>';
+    round.courts.forEach(function(court,ci){
+      h+=makeCourt(ri,ci,court[0],court[1],ci);
+    });
+    h+='</div>';
+  });
+  h+='<button class="reset-btn" onclick="resetScores()">Reiniciar resultados</button>';
+  document.getElementById("pg-fixture").innerHTML=h;
+  updateHeader();
+}
+
+function makeCourt(ri,ci,tAIdx,tBIdx,courtNum){
+  var sc=(scores[ri]&&scores[ri][ci])||{winner:0,sa:"",sb:""};
+  var res=sc.winner, aW=res===1, bW=res===2;
+  var cols=["b","g","v","b"];
+  var col=cols[courtNum%3];
   var aClass="team"+(aW?" w"+col:"");
   var bClass="team"+(bW?" w"+col:"");
   var aBtnClass="sbtn"+(aW?" a"+col:"");
   var bBtnClass="sbtn"+(bW?" a"+col:"");
-  var stxt=res===0?"vs":res===1?"A gana":"B gana";
+  var stxt=res===0?"vs":res===1?"A":"B";
+  var tANames=tAIdx.map(function(i){return players[i]||"?";});
+  var tBNames=tBIdx.map(function(i){return players[i]||"?";});
   var aW2=aW?'<span class="wbadge '+col+'">Gano</span>':"";
   var bW2=bW?'<span class="wbadge '+col+'">Gano</span>':"";
   var oca="updateScore("+ri+","+ci+",0,this.value)";
   var ocb="updateScore("+ri+","+ci+",1,this.value)";
-  return '<div class="court'+(ci===0?" sep":"")+'"><div class="clbl '+col+'">Cancha '+(ci+1)+'</div>'
+  return '<div class="court'+(courtNum===0?" sep":"")+'"><div class="clbl '+col+'">Cancha '+(courtNum+1)+'</div>'
     +'<div class="mrow">'
-    +'<div class="'+aClass+'">'+tA[0]+'<br>'+tA[1]+aW2+'</div>'
+    +'<div class="'+aClass+'">'+tANames[0]+'<br>'+tANames[1]+aW2+'</div>'
     +'<div class="sarea">'
     +'<button class="'+aBtnClass+'" onclick="toggleWinner('+ri+','+ci+',1)">A</button>'
     +'<span class="stxt">'+stxt+'</span>'
     +'<button class="'+bBtnClass+'" onclick="toggleWinner('+ri+','+ci+',2)">B</button>'
     +'</div>'
-    +'<div class="'+bClass+'">'+tB[0]+'<br>'+tB[1]+bW2+'</div>'
+    +'<div class="'+bClass+'">'+tBNames[0]+'<br>'+tBNames[1]+bW2+'</div>'
     +'</div>'
     +'<div class="score-row">'
-    +'<div class="score-lbl">'+tA[0]+' / '+tA[1]+'</div>'
+    +'<div class="score-lbl">'+tANames.join(" / ")+'</div>'
     +'<input class="score-inp" type="number" min="0" max="99" inputmode="numeric" placeholder="-" value="'+sc.sa+'" onchange="'+oca+'" oninput="'+oca+'">'
     +'<span class="score-dash">-</span>'
     +'<input class="score-inp" type="number" min="0" max="99" inputmode="numeric" placeholder="-" value="'+sc.sb+'" onchange="'+ocb+'" oninput="'+ocb+'">'
-    +'<div class="score-lbl">'+tB[0]+' / '+tB[1]+'</div>'
+    +'<div class="score-lbl">'+tBNames.join(" / ")+'</div>'
     +'</div></div>';
 }
 
 // ── RENDER RANKING ────────────────────────────────────────────────────────────
 function renderRanking(){
-  var d=done(), el=document.getElementById("pg-ranking");
-  if(d===0){el.innerHTML='<div class="empty"><p style="font-size:44px;margin-bottom:10px">&#127942;</p><p>Carga resultados en <strong>Fixture</strong><br>para ver el ranking.</p></div>';return;}
+  var d=done(), total=totalGames(), el=document.getElementById("pg-ranking");
+  if(d===0||total===0){el.innerHTML='<div class="empty"><p style="font-size:44px;margin-bottom:10px">&#127942;</p><p>Carga resultados en <strong>Fixture</strong></p></div>';return;}
   var rank=getRanking(), maxW=rank.reduce(function(m,r){return Math.max(m,r.wins);},1);
   var h="";
-  if(d===10){
+  if(d===total){
     h+='<div class="champ"><div style="font-size:44px">&#127942;</div>'
       +'<div style="font-size:13px;font-weight:700;color:#7A4800">Campeona!</div>'
       +'<div style="font-size:26px;font-weight:800;color:#1A2733">'+rank[0].name+'</div>'
       +'<div style="font-size:12px;color:#7A4800;margin-top:3px">'+rank[0].wins+' victorias</div></div>';
   }
-  h+='<div class="rank-card"><div class="rank-hdr">Ranking - '+d+' partido'+(d!==1?"s":"")+'</div>';
+  h+='<div class="rank-card"><div class="rank-hdr">Ranking - '+d+' / '+total+' partidos</div>';
   rank.forEach(function(p,i){
     var bc=i===0?"b1":i===1?"b2":i===2?"b3":"bx";
     var pct=Math.round(p.wins/maxW*100);
     var losses=p.played-p.wins;
     var diffStr=(p.diff>0?"+":"")+p.diff;
+    var pidx=players.indexOf(p.name);
     h+='<div class="rank-row">'
       +'<div class="bubble '+bc+'">'+(i+1)+'</div>'
       +'<div class="rinfo"><div class="rname">'+p.name+'</div>'
-      +'<div class="rsub">'+posLabel(p.name)+' - '+p.rests+' desc.</div>'
+      +'<div class="rsub">'+(pidx>=0?posLabel(pidx):"?")+' - '+p.rests+' desc.</div>'
       +'<div style="display:flex;gap:5px;margin-top:5px;flex-wrap:wrap">'
       +'<span style="font-size:10px;font-weight:700;background:#D5F0E0;color:#276836;padding:2px 7px;border-radius:8px">V: '+p.wins+'</span>'
       +'<span style="font-size:10px;font-weight:700;background:#FDECEA;color:#C0392B;padding:2px 7px;border-radius:8px">D: '+losses+'</span>'
@@ -333,30 +554,34 @@ function renderRanking(){
 
 // ── RENDER CRUCES ─────────────────────────────────────────────────────────────
 function renderCruces(){
-  var rounds=getRounds();
-  var h='<div class="info-box">5 rondas - 4 partidos por jugadora - Todas descansan 1 vez - Modo: '+(activeMode==="random"?"Random":"Manual")+'</div>';
-  h+='<div class="cruces-card"><div class="cruces-hdr">Programa de partidos</div>';
+  ensureScores();
+  var rounds=getActiveRounds();
+  if(rounds.length===0){document.getElementById("pg-cruces").innerHTML='<div class="empty"><p>Configura el fixture en <strong>Ajustes</strong></p></div>';return;}
+  var tdata=computeTimes();
+  var cols=["b","g","v"];
+  var h='<div class="cruces-card"><div class="cruces-hdr">Programa de partidos</div>';
   rounds.forEach(function(round,ri){
-    var sc1=scores[ri][0], sc2=scores[ri][1];
-    var r1txt=(sc1.sa&&sc1.sb)?sc1.sa+"-"+sc1.sb:"";
-    var r2txt=(sc2.sa&&sc2.sb)?sc2.sa+"-"+sc2.sb:"";
-    h+='<div class="cruce-row"><div class="cruce-round">Ronda '+(ri+1)+' - '+TIMES[ri]+'</div>'
-      +'<div class="cruce-match"><span class="cruce-court b">C1</span>'
-      +'<span class="cruce-teams">'+round.c1a[0]+'/'+round.c1a[1]+' vs '+round.c1b[0]+'/'+round.c1b[1]+'</span>'
-      +(r1txt?'<span class="cruce-result b">'+r1txt+'</span>':"")+'</div>'
-      +'<div class="cruce-match"><span class="cruce-court g">C2</span>'
-      +'<span class="cruce-teams">'+round.c2a[0]+'/'+round.c2a[1]+' vs '+round.c2b[0]+'/'+round.c2b[1]+'</span>'
-      +(r2txt?'<span class="cruce-result g">'+r2txt+'</span>':"")+'</div>'
-      +'<span class="cruce-rest">Desc: '+round.r1+' / '+round.r2+'</span>'
-      +'</div>';
+    var sc=(scores[ri])||[];
+    var restNames=round.resting.map(function(i){return players[i]||"?";}).join(" / ");
+    h+='<div class="cruce-row"><div class="cruce-round">Ronda '+(ri+1)+' - '+tdata.times[ri]+'</div>';
+    round.courts.forEach(function(court,ci){
+      var s=(sc[ci])||{sa:"",sb:""};
+      var rtxt=(s.sa&&s.sb)?s.sa+"-"+s.sb:"";
+      var col=cols[ci%3];
+      var tAN=court[0].map(function(i){return players[i]||"?";});
+      var tBN=court[1].map(function(i){return players[i]||"?";});
+      h+='<div class="cruce-match"><span class="cruce-court '+col+'">C'+(ci+1)+'</span>'
+        +'<span class="cruce-teams">'+tAN.join("/")+' vs '+tBN.join("/")+'</span>'
+        +(rtxt?'<span class="cruce-result '+col+'">'+rtxt+'</span>':"")+'</div>';
+    });
+    if(restNames) h+='<span class="cruce-rest">Desc: '+restNames+'</span>';
+    h+='</div>';
   });
   h+="</div>";
   document.getElementById("pg-cruces").innerHTML=h;
 }
 
 // ── RENDER PAREJAS ────────────────────────────────────────────────────────────
-var pairsMode = "random";
-
 function renderParejas(){
   var btnR=pairsMode==="random"?"on":"";
   var btnM=pairsMode==="manual"?"on":"";
@@ -364,68 +589,80 @@ function renderParejas(){
     +'<button class="mode-btn '+btnR+'" onclick="setPairsMode(0)">Random</button>'
     +'<button class="mode-btn '+btnM+'" onclick="setPairsMode(1)">Manual</button>'
     +'</div>';
-
   if(pairsMode==="random"){
-    h+='<div class="ok-box">Fixture generado automaticamente: 5 rondas, todas juegan 4 partidos, todas descansan 1 vez, sin parejas repetidas.</div>';
-    h+='<button class="apply-btn blue" style="margin-bottom:11px" onclick="shuffleRandom()">Mezclar de nuevo las parejas</button>';
-    h+='<div class="section-card"><div class="section-hdr">Parejas del fixture</div>';
-    RANDOM_ROUNDS.forEach(function(r,ri){
-      h+='<div style="padding:10px 14px;border-bottom:'+(ri<4?"1px solid #EEF2F7":"none")+'">'
-        +'<div style="font-size:10px;font-weight:700;text-transform:uppercase;color:#6B7A8D;margin-bottom:5px">Ronda '+(ri+1)+' - '+TIMES[ri]+'</div>'
-        +'<div style="font-size:12px;margin-bottom:2px"><span style="font-size:9px;background:#D6E8FA;color:#2E75B6;font-weight:700;padding:1px 5px;border-radius:5px;margin-right:5px">C1</span>'+r.c1a[0]+'/'+r.c1a[1]+' vs '+r.c1b[0]+'/'+r.c1b[1]+'</div>'
-        +'<div style="font-size:12px;margin-bottom:4px"><span style="font-size:9px;background:#D5F0E0;color:#276836;font-weight:700;padding:1px 5px;border-radius:5px;margin-right:5px">C2</span>'+r.c2a[0]+'/'+r.c2a[1]+' vs '+r.c2b[0]+'/'+r.c2b[1]+'</div>'
-        +'<span style="font-size:10px;color:#8B5E00;background:#FFF2CC;padding:2px 7px;border-radius:10px">Desc: '+r.r1+' / '+r.r2+'</span>'
-        +'</div>';
-    });
-    h+="</div>";
+    h+='<div class="ok-box">Fixture generado automaticamente. Todas juegan igual, descansan igual, sin parejas repetidas.</div>';
+    h+='<button class="apply-btn blue" style="margin-bottom:11px" onclick="doShuffle()">Mezclar de nuevo</button>';
+    // show current random fixture summary
+    var rounds=generatedRounds;
+    if(rounds.length>0){
+      var tdata=computeTimes();
+      h+='<div class="section-card"><div class="section-hdr">Fixture actual</div>';
+      rounds.forEach(function(r,ri){
+        h+='<div style="padding:9px 14px;border-bottom:'+(ri<rounds.length-1?"1px solid #EEF2F7":"none")+'">'
+          +'<div style="font-size:10px;font-weight:700;text-transform:uppercase;color:#6B7A8D;margin-bottom:5px">Ronda '+(ri+1)+' - '+tdata.times[ri]+'</div>';
+        r.courts.forEach(function(court,ci){
+          var cols=["b","g","v"];
+          var col=cols[ci%3];
+          var tAN=court[0].map(function(i){return players[i]||"?";});
+          var tBN=court[1].map(function(i){return players[i]||"?";});
+          h+='<div style="font-size:12px;margin-bottom:2px">'
+            +'<span style="font-size:9px;font-weight:700;padding:1px 5px;border-radius:5px;margin-right:4px;'
+            +(col==="b"?"background:#D6E8FA;color:#2E75B6":col==="g"?"background:#D5F0E0;color:#276836":"background:#EDE0FF;color:#7B3FA0")
+            +'">C'+(ci+1)+'</span>'
+            +tAN.join("/")+' vs '+tBN.join("/")+'</div>';
+        });
+        if(r.resting.length>0){
+          var rn=r.resting.map(function(i){return players[i]||"?";}).join(", ");
+          h+='<span style="font-size:10px;color:#8B5E00;background:#FFF2CC;padding:1px 6px;border-radius:8px">Desc: '+rn+'</span>';
+        }
+        h+='</div>';
+      });
+      h+='</div>';
+    }
     if(activeMode!=="random"){
       h+='<button class="apply-btn" onclick="applyMode(0)">Usar este fixture</button>';
     } else {
       h+='<div class="ok-box" style="margin-top:4px">Este es el modo activo.</div>';
     }
-
   } else {
-    // MANUAL: choose 5 pairs
-    h+='<div class="info-box">Arma las 5 parejas fijas. Los cruces (quien enfrenta a quien) se calculan automaticamente para que cada pareja juegue 4 partidos y descanse 1, sin repetir rivales.</div>';
-    h+='<div class="section-card"><div class="section-hdr">Las 5 parejas</div>';
-    for(var pi=0;pi<5;pi++){
-      var p0=manualPairs[pi][0], p1=manualPairs[pi][1];
-      h+='<div class="pair-row-manual">'
+    // Manual: define N/2 pairs (or floor(N/2))
+    var numPairs = Math.floor(players.length/2);
+    // Ensure manualPairs has right size
+    while(manualPairs.length < numPairs) manualPairs.push([manualPairs.length*2, manualPairs.length*2+1]);
+    while(manualPairs.length > numPairs) manualPairs.pop();
+    h+='<div class="info-box">Arma las '+numPairs+' parejas fijas. Yo calculo los cruces automaticamente para que cada pareja juegue y descanse la misma cantidad de veces.</div>';
+    h+='<div class="section-card"><div class="section-hdr">Las '+numPairs+' parejas</div>';
+    for(var pi=0;pi<numPairs;pi++){
+      var p0=manualPairs[pi]?manualPairs[pi][0]:pi*2;
+      var p1=manualPairs[pi]?manualPairs[pi][1]:pi*2+1;
+      h+='<div class="pair-row-m">'
         +'<div class="pair-num">'+(pi+1)+'</div>'
-        +makePlayerSel(pi,0,p0)
-        +'<span class="pair-plus">+</span>'
-        +makePlayerSel(pi,1,p1)
+        +mkPairSel(pi,0,p0)
+        +'<span style="font-size:14px;color:#aaa;font-weight:700">+</span>'
+        +mkPairSel(pi,1,p1)
         +'</div>';
     }
-    h+="</div>";
+    h+='</div>';
     h+='<button class="apply-btn" onclick="applyManual()">Aplicar al fixture</button>';
   }
   document.getElementById("pg-parejas").innerHTML=h;
 }
 
-function makePlayerSel(pi,slot,selected){
+function mkPairSel(pi,slot,selected){
   var opts='<option value="-1">-</option>';
-  players.forEach(function(p,i){
-    opts+='<option value="'+i+'"'+(i===selected?" selected":"")+'>'+p+'</option>';
-  });
+  players.forEach(function(p,i){opts+='<option value="'+i+'"'+(i===selected?" selected":"")+'>'+p+'</option>';});
   return '<select class="pair-sel" onchange="updatePair('+pi+','+slot+',this.value)">'+opts+'</select>';
 }
 function updatePair(pi,slot,val){
+  if(!manualPairs[pi]) manualPairs[pi]=[0,1];
   manualPairs[pi][slot]=parseInt(val);
   save();
 }
-function setPairsMode(m){
-  pairsMode=m===0?"random":"manual";
-  renderParejas();
-}
-function applyMode(m){
-  activeMode=m===0?"random":"manual";
-  save(); render(); showTab("fixture");
-}
+function setPairsMode(m){pairsMode=m===0?"random":"manual";renderParejas();}
+function applyMode(m){activeMode=m===0?"random":"manual";save();render();}
 function applyManual(){
-  // validate: no player appears twice
   var used={};
-  for(var pi=0;pi<5;pi++){
+  for(var pi=0;pi<manualPairs.length;pi++){
     for(var s=0;s<2;s++){
       var idx=manualPairs[pi][s];
       if(idx<0||idx>=players.length){alert("Faltan jugadoras en pareja "+(pi+1));return;}
@@ -434,113 +671,189 @@ function applyManual(){
     }
   }
   activeMode="manual";
-  save(); render(); showTab("fixture");
+  scores=[];
+  save();render();showTab("fixture");
+}
+function doShuffle(){
+  generatedRounds=generateSchedule(Math.random()*99999|0);
+  scores=[];
+  activeMode="random";
+  save();render();
 }
 
 // ── RENDER JUGADORAS ──────────────────────────────────────────────────────────
 function renderJugadoras(){
-  var h='<div class="info-box">Edita los nombres y la posicion de cada jugadora. Los cambios se aplican al instante en todo el fixture.</div>';
-  h+='<div class="section-card"><div class="section-hdr">Jugadoras</div>';
+  var h='<div class="section-card"><div class="section-hdr">Jugadoras ('+players.length+')</div>';
   players.forEach(function(p,i){
     var pos=positions[i]||"D";
     var dOn=pos==="D"?"on-d":"", rOn=pos==="R"?"on-r":"", aOn=pos==="B"?"on-a":"";
     h+='<div class="player-row">'
       +'<div class="player-num">'+(i+1)+'</div>'
-      +'<input class="player-name-inp" type="text" value="'+p+'" maxlength="12"'
-      +' onchange="updatePlayerName('+i+',this.value)" oninput="updatePlayerName('+i+',this.value)">'
+      +'<input class="player-name-inp" type="text" value="'+p+'" maxlength="12" onchange="renamePlayer('+i+',this.value)" oninput="renamePlayer('+i+',this.value)">'
       +'<div class="pos-toggle">'
-      +'<button class="pos-btn '+dOn+'" onclick="updatePlayerPos('+i+',0)">D</button>'
-      +'<button class="pos-btn '+rOn+'" onclick="updatePlayerPos('+i+',1)">R</button>'
-      +'<button class="pos-btn '+aOn+'" onclick="updatePlayerPos('+i+',2)">D+R</button>'
+      +'<button class="pos-btn '+dOn+'" onclick="setPosP('+i+',0)">D</button>'
+      +'<button class="pos-btn '+rOn+'" onclick="setPosP('+i+',1)">R</button>'
+      +'<button class="pos-btn '+aOn+'" onclick="setPosP('+i+',2)">D+R</button>'
       +'</div>'
+      +'<button class="del-btn" onclick="delPlayer('+i+')">x</button>'
       +'</div>';
   });
-  h+="</div>";
-  h+='<div class="info-box" style="margin-top:4px">D = Drive &nbsp; R = Reves &nbsp; D+R = Ambas</div>';
-  h+='<button class="reset-btn" onclick="resetPlayers()">Restaurar nombres originales</button>';
+  h+='</div>';
+  h+='<div class="section-card" style="overflow:visible"><div class="section-hdr">Agregar jugadora</div>'
+    +'<div class="add-player-row">'
+    +'<input class="add-inp" type="text" id="new-player-inp" placeholder="Nombre..." maxlength="12">'
+    +'<button class="add-btn" onclick="addPlayer()">Agregar</button>'
+    +'</div></div>';
+  h+='<button class="reset-btn" onclick="resetPlayers()">Restaurar jugadoras originales</button>';
   document.getElementById("pg-jugadoras").innerHTML=h;
 }
-function updatePlayerName(i,val){
+function renamePlayer(i,val){
   val=val.trim();
-  if(val.length>0){ players[i]=val; save(); renderRanking(); renderCruces(); }
+  if(val.length>0){players[i]=val;save();renderRanking();renderCruces();}
 }
-function updatePlayerPos(i,posCode){
-  positions[i]=posCode===0?"D":posCode===1?"R":"B";
-  save(); renderJugadoras();
+function setPosP(i,code){
+  positions[i]=code===0?"D":code===1?"R":"B";
+  save();renderJugadoras();
+}
+function delPlayer(i){
+  if(players.length<=4){alert("Minimo 4 jugadoras.");return;}
+  if(!confirm("Eliminar a "+players[i]+"?")) return;
+  players.splice(i,1);positions.splice(i,1);
+  // rebuild manual pairs removing references to this index
+  manualPairs=manualPairs.filter(function(p){return p[0]!==i&&p[1]!==i;});
+  manualPairs=manualPairs.map(function(p){return [p[0]>i?p[0]-1:p[0], p[1]>i?p[1]-1:p[1]];});
+  generatedRounds=generateSchedule(42);
+  scores=[];
+  save();render();
+}
+function addPlayer(){
+  var inp=document.getElementById("new-player-inp");
+  var name=(inp?inp.value.trim():"");
+  if(!name){alert("Ingresa un nombre.");return;}
+  if(players.length>=16){alert("Maximo 16 jugadoras.");return;}
+  players.push(name);positions.push("D");
+  generatedRounds=generateSchedule(42);
+  scores=[];
+  save();render();
 }
 function resetPlayers(){
-  if(confirm("Restaurar nombres y posiciones originales?")){
-    players=DEFAULT_PLAYERS.slice();
-    positions=DEFAULT_POS.slice();
-    save(); render();
-  }
-}
-function posLabel(name){
-  var i=players.indexOf(name);
-  if(i<0) return "";
-  var p=positions[i]||"D";
-  return p==="D"?"Drive":p==="R"?"Reves":"Drive+Reves";
+  if(!confirm("Restaurar jugadoras originales?")) return;
+  players=DEF_PLAYERS.slice();positions=DEF_POS.slice();
+  manualPairs=[];generatedRounds=generateSchedule(42);scores=[];
+  save();render();
 }
 
-// ── SHUFFLE RANDOM ────────────────────────────────────────────────────────────
-function shuffleRandom(){
-  var restSched=[[0,1],[2,3],[4,5],[6,7],[8,9]]; // player index pairs for rest
-  // Actually use player names - shuffle assignments fresh
-  // Simple: rebuild using the MATCHUP algorithm on shuffled player assignments
-  var idxs=[0,1,2,3,4,5,6,7,8,9];
-  for(var i=idxs.length-1;i>0;i--){
-    var j=Math.floor(Math.random()*(i+1));
-    var tmp=idxs[i];idxs[i]=idxs[j];idxs[j]=tmp;
-  }
-  var pc={};
-  function addOpp(a,b){var k=Math.min(a,b)+","+Math.max(a,b);pc[k]=(pc[k]||0)+1;}
-  function getOpp(a,b){return pc[Math.min(a,b)+","+Math.max(a,b)]||0;}
+// ── RENDER SETTINGS ───────────────────────────────────────────────────────────
+function renderSettings(){
+  var rounds=generatedRounds;
+  var numRounds=rounds.length||0;
+  var playPerPlayer=numRounds>0?(numRounds-(numRounds*Math.max(0,players.length-4*courts)/players.length)):"?";
 
-  // Rest pairs: pair i = [idxs[2i], idxs[2i+1]]
-  // MATCHUP structure keeps rest/play pattern, just reassign which players are in each "pair slot"
-  var rounds=[];
-  MATCHUP.forEach(function(m,ri){
-    var restSlot=m.rest;
-    var rA=idxs[restSlot*2], rB=idxs[restSlot*2+1];
-    // get playing pair slots
-    var c1PairA=m.c1[0], c1PairB=m.c1[1];
-    var c2PairA=m.c2[0], c2PairB=m.c2[1];
-    function pName(slot,member){return players[idxs[slot*2+member]];}
-    rounds.push({
-      c1a:[pName(c1PairA,0),pName(c1PairA,1)],
-      c1b:[pName(c1PairB,0),pName(c1PairB,1)],
-      c2a:[pName(c2PairA,0),pName(c2PairA,1)],
-      c2b:[pName(c2PairB,0),pName(c2PairB,1)],
-      r1:players[rA], r2:players[rB]
-    });
+  // compute schedule preview
+  var N=players.length, C=courts;
+  var playingPR=Math.min(4*C,Math.floor(N/4)*4);
+  var restingPR=N-playingPR;
+  var g2=gcd(N,playingPR);
+  var nr=N/g2;
+  var playPP=nr*playingPR/N;
+  var restPP=nr*restingPR/N;
+  var mpr=Math.round(hours*60/nr);
+
+  var h='<div class="section-card"><div class="section-hdr">Configuracion</div>'
+    // Courts
+    +'<div class="setting-row"><div class="setting-label">'
+    +'<div class="setting-title">Canchas</div>'
+    +'<div class="setting-sub">Canchas disponibles</div>'
+    +'</div><div class="stepper">'
+    +'<button class="step-btn" onclick="changeCourts(-1)">-</button>'
+    +'<span class="step-val" id="val-courts">'+courts+'</span>'
+    +'<button class="step-btn" onclick="changeCourts(1)">+</button>'
+    +'</div></div>'
+    // Hours
+    +'<div class="setting-row"><div class="setting-label">'
+    +'<div class="setting-title">Duracion</div>'
+    +'<div class="setting-sub">Tiempo disponible</div>'
+    +'</div><select class="time-sel" id="sel-hours" onchange="changeHours(this.value)">';
+  HOUR_OPTIONS.forEach(function(h2){
+    h+='<option value="'+h2+'"'+(h2===hours?" selected":"")+'>'+h2+'h</option>';
   });
-  for(var i=0;i<5;i++) RANDOM_ROUNDS[i]=rounds[i];
-  scores=Array(5).fill(null).map(function(){return [{winner:0,sa:"",sb:""}  ,{winner:0,sa:"",sb:""}];});
+  h+='</select></div>'
+    // Players count (read-only, managed in Jugadoras)
+    +'<div class="setting-row"><div class="setting-label">'
+    +'<div class="setting-title">Jugadoras</div>'
+    +'<div class="setting-sub">Gestion en solapa Jugadoras</div>'
+    +'</div><span class="step-val">'+players.length+'</span></div>'
+    +'</div>';
+
+  // Schedule preview
+  h+='<div class="section-card"><div class="section-hdr">Resumen del fixture</div>'
+    +'<div class="schedule-preview">'
+    +'<b>'+players.length+'</b> jugadoras, <b>'+courts+'</b> cancha'+(courts>1?"s":"")+', <b>'+hours+'h</b><br>'
+    +'<b>'+nr+'</b> rondas de <b>'+mpr+'</b> min cada una<br>'
+    +'<b>'+playPP+'</b> partidos por jugadora<br>'
+    +'<b>'+restPP+'</b> descanso'+(restPP!==1?"s":"")+" por jugadora"
+    +'</div></div>';
+
+  h+='<button class="apply-btn green" onclick="applySettings()">Generar fixture nuevo</button>';
+  h+='<div style="height:8px"></div>';
+  h+='<button class="reset-btn" onclick="resetAll()">Reiniciar resultados</button>';
+  document.getElementById("pg-settings").innerHTML=h;
+}
+function changeCourts(delta){
+  var newC=courts+delta;
+  var maxC=Math.floor(players.length/4);
+  if(newC<1||newC>Math.min(3,maxC)) return;
+  courts=newC;
+  save();renderSettings();
+}
+function changeHours(val){
+  hours=parseFloat(val);
+  save();renderSettings();
+}
+function applySettings(){
+  generatedRounds=generateSchedule(Math.random()*99999|0);
+  scores=[];
   activeMode="random";
-  save(); render();
+  save();render();showTab("fixture");
+}
+
+// ── HEADER ────────────────────────────────────────────────────────────────────
+function updateHeader(){
+  var rounds=getActiveRounds();
+  if(rounds.length===0){document.getElementById("hdr-sub").textContent="Configura en Ajustes";return;}
+  var tdata=computeTimes();
+  var N=players.length, C=rounds[0].courts.length;
+  document.getElementById("hdr-sub").textContent=
+    N+" jugadoras - "+C+" cancha"+(C>1?"s":"")+" - "+rounds.length+" rondas - "+tdata.minPerRound+"min c/u";
 }
 
 // ── GLOBAL ────────────────────────────────────────────────────────────────────
 function render(){
-  renderFixture(); renderRanking(); renderCruces(); renderParejas(); renderJugadoras();
+  renderFixture();renderRanking();renderCruces();
+  renderParejas();renderJugadoras();renderSettings();
 }
 function showTab(t){
-  ["fixture","ranking","cruces","parejas","jugadoras"].forEach(function(id){
+  ["fixture","ranking","cruces","parejas","jugadoras","settings"].forEach(function(id){
     document.getElementById("pg-"+id).style.display=t===id?"block":"none";
   });
-  document.getElementById("t-fix").className="tab"+(t==="fixture"?" on":"");
-  document.getElementById("t-rank").className="tab"+(t==="ranking"?" on":"");
-  document.getElementById("t-cruz").className="tab"+(t==="cruces"?" on":"");
-  document.getElementById("t-par").className="tab"+(t==="parejas"?" on":"");
-  document.getElementById("t-jug").className="tab"+(t==="jugadoras"?" on":"");
+  ["fix","rank","cruz","par","jug","set"].forEach(function(id,i){
+    var tabs=["fixture","ranking","cruces","parejas","jugadoras","settings"];
+    document.getElementById("t-"+id).className="tab"+(t===tabs[i]?" on":"");
+  });
+}
+function resetScores(){
+  if(!confirm("Reiniciar todos los resultados?")) return;
+  scores=[];save();render();
 }
 function resetAll(){
-  if(confirm("Reiniciar todos los resultados?")){
-    scores=Array(5).fill(null).map(function(){return [{winner:0,sa:"",sb:""},{winner:0,sa:"",sb:""}];});
-    save(); render();
-  }
+  if(!confirm("Reiniciar resultados?")) return;
+  scores=[];save();render();
 }
 
+// Initialize: generate rounds if none exist
+if(!generatedRounds||generatedRounds.length===0){
+  generatedRounds=generateSchedule(42);
+}
 render();
 </script>
 </body>
