@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Fixture Pádel">
-<title>Fixture Pádel</title>
+<meta name="apple-mobile-web-app-title" content="Fixture Padel">
+<title>Fixture Padel</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 body{font-family:-apple-system,sans-serif;background:#F0F4F8;color:#1A2733;min-height:100vh}
@@ -17,29 +17,22 @@ body{font-family:-apple-system,sans-serif;background:#F0F4F8;color:#1A2733;min-h
 .tab{flex:1;padding:7px 2px;border-radius:20px;border:none;font-size:11px;font-weight:600;cursor:pointer;background:rgba(255,255,255,.15);color:rgba(255,255,255,.7);-webkit-appearance:none}
 .tab.on{background:#fff;color:#1A3A5C}
 .pg{padding:14px;max-width:480px;margin:0 auto;padding-bottom:30px}
-
-/* PROGRESS */
 .prog-wrap{background:#fff;border-radius:14px;padding:13px;margin-bottom:11px;box-shadow:0 2px 10px rgba(0,0,0,.09)}
 .prog-lbl{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:#1A3A5C;margin-bottom:7px}
 .prog-bar{height:8px;background:#E8EDF2;border-radius:4px;overflow:hidden}
 .prog-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,#2E75B6,#276836);transition:width .4s}
-
-/* CARDS */
 .card{background:#fff;border-radius:14px;box-shadow:0 2px 10px rgba(0,0,0,.09);margin-bottom:11px;overflow:hidden}
 .rhdr{display:flex;align-items:center;justify-content:space-between;padding:9px 13px;background:#1A3A5C;color:#fff;flex-wrap:wrap;gap:4px}
 .rnum{font-size:14px;font-weight:700}
 .rtime{font-size:11px;opacity:.75;background:rgba(255,255,255,.15);padding:2px 7px;border-radius:10px}
 .rbadge{font-size:11px;background:#FFF2CC;color:#8B5E00;padding:2px 8px;border-radius:20px;font-weight:600}
-
-/* COURT */
 .court{padding:11px 13px}
 .court.sep{border-bottom:1px solid #EEF2F7}
 .clbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:7px}
 .clbl.b{color:#2E75B6}.clbl.g{color:#276836}
 .mrow{display:flex;align-items:center;gap:5px}
 .team{flex:1;text-align:center;font-size:12px;font-weight:600;line-height:1.4;color:#1A2733}
-.team.wb{color:#2E75B6;font-weight:800}
-.team.wg{color:#276836;font-weight:800}
+.team.wb{color:#2E75B6;font-weight:800}.team.wg{color:#276836;font-weight:800}
 .wbadge{display:block;font-size:9px;font-weight:700;margin-top:1px}
 .wbadge.b{color:#2E75B6}.wbadge.g{color:#276836}
 .sarea{display:flex;align-items:center;gap:3px;flex-shrink:0}
@@ -52,40 +45,28 @@ body{font-family:-apple-system,sans-serif;background:#F0F4F8;color:#1A2733;min-h
 .score-inp{width:44px;height:34px;border:2px solid #E8EDF2;border-radius:8px;text-align:center;font-size:16px;font-weight:700;color:#1A3A5C;background:#F8FAFC;-webkit-appearance:none}
 .score-inp:focus{outline:none;border-color:#2E75B6}
 .score-dash{font-size:18px;font-weight:700;color:#6B7A8D}
-
-/* RANKING */
 .rank-card{background:#fff;border-radius:14px;box-shadow:0 2px 10px rgba(0,0,0,.09);overflow:hidden;margin-bottom:11px}
 .rank-hdr{background:#1A3A5C;color:#fff;padding:11px 15px;font-size:14px;font-weight:700}
 .rank-row{display:flex;align-items:center;padding:10px 15px;border-bottom:1px solid #EEF2F7;gap:9px}
 .rank-row:last-child{border-bottom:none}
 .bubble{width:27px;height:27px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;flex-shrink:0}
 .b1{background:#FFD700;color:#7A5800}.b2{background:#C0C0C0;color:#444}.b3{background:#CD7F32;color:#fff}.bx{background:#E8EDF2;color:#6B7A8D;font-size:11px}
-.rinfo{flex:1}
-.rname{font-size:14px;font-weight:600}
-.rsub{font-size:10px;color:#6B7A8D;margin-top:1px}
+.rinfo{flex:1}.rname{font-size:14px;font-weight:600}.rsub{font-size:10px;color:#6B7A8D;margin-top:1px}
 .rbar{height:4px;background:#E8EDF2;border-radius:3px;margin-top:5px;overflow:hidden}
 .rbar-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,#2E75B6,#5BA4E0);transition:width .5s}
-.rwins{text-align:right}
-.rnum-big{font-size:20px;font-weight:800;color:#1A3A5C;line-height:1}
-.rlbl{font-size:10px;color:#6B7A8D}
-
-/* CRUCES */
+.rwins{text-align:right}.rnum-big{font-size:20px;font-weight:800;color:#1A3A5C;line-height:1}.rlbl{font-size:10px;color:#6B7A8D}
 .cruces-card{background:#fff;border-radius:14px;box-shadow:0 2px 10px rgba(0,0,0,.09);overflow:hidden;margin-bottom:11px}
 .cruces-hdr{background:#1A3A5C;color:#fff;padding:11px 15px;font-size:14px;font-weight:700}
 .cruce-row{padding:10px 14px;border-bottom:1px solid #EEF2F7}
 .cruce-row:last-child{border-bottom:none}
 .cruce-round{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:#6B7A8D;margin-bottom:6px}
 .cruce-match{display:flex;align-items:center;gap:6px;margin-bottom:4px}
-.cruce-match:last-child{margin-bottom:0}
 .cruce-court{font-size:9px;font-weight:700;padding:1px 5px;border-radius:8px;flex-shrink:0}
-.cruce-court.b{background:#D6E8FA;color:#2E75B6}
-.cruce-court.g{background:#D5F0E0;color:#276836}
+.cruce-court.b{background:#D6E8FA;color:#2E75B6}.cruce-court.g{background:#D5F0E0;color:#276836}
 .cruce-teams{font-size:12px;font-weight:600;color:#1A2733;flex:1}
 .cruce-rest{font-size:10px;color:#8B5E00;background:#FFF2CC;padding:2px 7px;border-radius:10px;margin-top:5px;display:inline-block}
 .cruce-result{font-size:11px;font-weight:700;flex-shrink:0}
 .cruce-result.b{color:#2E75B6}.cruce-result.g{color:#276836}
-
-/* PAREJAS TAB */
 .mode-toggle{display:flex;background:#E8EDF2;border-radius:12px;padding:3px;margin-bottom:14px;gap:3px}
 .mode-btn{flex:1;padding:9px 6px;border-radius:9px;border:none;font-size:13px;font-weight:600;cursor:pointer;background:transparent;color:#6B7A8D;-webkit-appearance:none;transition:all .2s}
 .mode-btn.on{background:#fff;color:#1A3A5C;box-shadow:0 1px 4px rgba(0,0,0,.12)}
@@ -97,20 +78,14 @@ body{font-family:-apple-system,sans-serif;background:#F0F4F8;color:#1A2733;min-h
 .manual-court-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;margin-bottom:6px}
 .manual-court-label.b{color:#2E75B6}.manual-court-label.g{color:#276836}
 .pair-row{display:flex;align-items:center;gap:6px;margin-bottom:6px}
-.pair-row:last-child{margin-bottom:0}
-.pair-sel{flex:1;height:34px;border:2px solid #E8EDF2;border-radius:8px;font-size:13px;font-weight:600;color:#1A3A5C;background:#F8FAFC;padding:0 8px;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%236B7A8D'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 8px center}
-.pair-vs{font-size:10px;font-weight:700;color:#aaa;flex-shrink:0}
+.pair-sel{flex:1;height:34px;border:2px solid #E8EDF2;border-radius:8px;font-size:13px;font-weight:600;color:#1A3A5C;background:#F8FAFC;padding:0 8px;-webkit-appearance:none}
 .pair-court-block{margin-bottom:10px}
-.pair-court-block:last-child{margin-bottom:0}
 .rest-sel-row{display:flex;gap:6px;margin-top:8px;padding-top:8px;border-top:1px dashed #E8EDF2}
-.rest-sel{flex:1;height:32px;border:2px solid #FFF2CC;border-radius:8px;font-size:12px;font-weight:600;color:#8B5E00;background:#FFFDF0;padding:0 8px;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%238B5E00'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 8px center}
+.rest-sel{flex:1;height:32px;border:2px solid #FFF2CC;border-radius:8px;font-size:12px;font-weight:600;color:#8B5E00;background:#FFFDF0;padding:0 8px;-webkit-appearance:none}
 .apply-btn{width:100%;padding:13px;border-radius:14px;border:none;background:#1A3A5C;color:#fff;font-size:14px;font-weight:700;cursor:pointer;margin-top:4px;-webkit-appearance:none}
-.apply-btn:active{opacity:.85}
 .warn-box{background:#FFF2CC;border-radius:10px;padding:9px 12px;margin-bottom:10px;font-size:11px;color:#8B5E00;line-height:1.5}
 .ok-box{background:#D5F0E0;border-radius:10px;padding:9px 12px;margin-bottom:10px;font-size:11px;color:#276836;line-height:1.5}
 .info-box{background:#EBF3FB;border-radius:10px;padding:10px 13px;margin-bottom:11px;font-size:11px;color:#1A3A5C;line-height:1.5}
-
-/* MISC */
 .empty{text-align:center;padding:36px 20px;color:#6B7A8D}
 .empty .ico{font-size:44px;margin-bottom:10px}
 .champ{background:linear-gradient(135deg,#FFD700,#FFA500);padding:18px;text-align:center;border-radius:14px;margin-bottom:11px;box-shadow:0 2px 10px rgba(0,0,0,.1)}
@@ -118,29 +93,24 @@ body{font-family:-apple-system,sans-serif;background:#F0F4F8;color:#1A2733;min-h
 </style>
 </head>
 <body>
-
 <div class="hdr">
-  <h1>🎾 Fixture Pádel</h1>
+  <h1>Fixture Padel</h1>
   <p>2 canchas · 10 chicas · 5 rondas · 4 partidos c/u · 24 min</p>
 </div>
 <div class="tabs">
-  <button class="tab on"  id="t-fix"    onclick="showTab('fixture')">Fixture</button>
-  <button class="tab"     id="t-rank"   onclick="showTab('ranking')">Ranking</button>
-  <button class="tab"     id="t-cruces" onclick="showTab('cruces')">Cruces</button>
-  <button class="tab"     id="t-par"    onclick="showTab('parejas')">Parejas</button>
+  <button class="tab on" id="t-fix"    onclick="showTab('fixture')">Fixture</button>
+  <button class="tab"    id="t-rank"   onclick="showTab('ranking')">Ranking</button>
+  <button class="tab"    id="t-cruces" onclick="showTab('cruces')">Cruces</button>
+  <button class="tab"    id="t-par"    onclick="showTab('parejas')">Parejas</button>
 </div>
-
 <div id="pg-fixture"  class="pg"></div>
 <div id="pg-ranking"  class="pg" style="display:none"></div>
 <div id="pg-cruces"   class="pg" style="display:none"></div>
 <div id="pg-parejas"  class="pg" style="display:none"></div>
-
 <script>
 var PLAYERS=["Caro","Maru","Vale","Ani","Flor","Jime","Ceci","Dani","Maga","Ale"];
-var POS={Caro:"Drive",Maru:"Drive/Revés",Vale:"Revés",Ani:"Revés",Flor:"Revés/Drive",Jime:"Revés",Ceci:"Revés",Dani:"Drive",Maga:"Drive",Ale:"Drive"};
+var POS={Caro:"Drive",Maru:"Drive/Rev\u00e9s",Vale:"Rev\u00e9s",Ani:"Rev\u00e9s",Flor:"Rev\u00e9s/Drive",Jime:"Rev\u00e9s",Ceci:"Rev\u00e9s",Dani:"Drive",Maga:"Drive",Ale:"Drive"};
 var TIMES=["9:30","9:54","10:18","10:42","11:06"];
-
-// RANDOM rounds (fixed optimal schedule)
 var RANDOM_ROUNDS=[
   {c1a:["Dani","Flor"],c1b:["Maga","Vale"],c2a:["Ceci","Jime"],c2b:["Ale","Ani"],r1:"Caro",r2:"Maru"},
   {c1a:["Jime","Maga"],c1b:["Ceci","Flor"],c2a:["Maru","Ale"],c2b:["Dani","Caro"],r1:"Vale",r2:"Ani"},
@@ -148,45 +118,24 @@ var RANDOM_ROUNDS=[
   {c1a:["Maga","Flor"],c1b:["Jime","Ale"],c2a:["Vale","Maru"],c2b:["Caro","Ani"],r1:"Ceci",r2:"Dani"},
   {c1a:["Dani","Ani"],c1b:["Vale","Jime"],c2a:["Caro","Flor"],c2b:["Ceci","Maru"],r1:"Maga",r2:"Ale"}
 ];
-
-// MANUAL rounds — editable by user, starts as copy of random
-var MANUAL_ROUNDS = RANDOM_ROUNDS.map(function(r){
+var MANUAL_ROUNDS=RANDOM_ROUNDS.map(function(r){
   return {c1a:r.c1a.slice(),c1b:r.c1b.slice(),c2a:r.c2a.slice(),c2b:r.c2b.slice(),r1:r.r1,r2:r.r2};
 });
-
-// Which mode is active: 'random' or 'manual'
-var activeMode = 'random';
-
-function getRounds(){ return activeMode==='random' ? RANDOM_ROUNDS : MANUAL_ROUNDS; }
-
-// scores[ri][ci] = {winner:0/1/2, sa:'', sb:''}
-var scores = Array(5).fill(null).map(function(){return [{winner:0,sa:'',sb:''},{winner:0,sa:'',sb:''}];});
-try{var sv=sessionStorage.getItem('pf3');if(sv){var p=JSON.parse(sv);scores=p.scores;if(p.mode)activeMode=p.mode;if(p.manual)MANUAL_ROUNDS=p.manual;}}catch(e){}
-
-function save(){
-  try{sessionStorage.setItem('pf3',JSON.stringify({scores:scores,mode:activeMode,manual:MANUAL_ROUNDS}));}catch(e){}
-}
-
-function toggleWinner(ri,ci,w){
-  scores[ri][ci].winner=scores[ri][ci].winner===w?0:w;
-  save();render();
-}
+var activeMode="random";
+function getRounds(){return activeMode==="random"?RANDOM_ROUNDS:MANUAL_ROUNDS;}
+var scores=Array(5).fill(null).map(function(){return [{winner:0,sa:"",sb:""},{winner:0,sa:"",sb:""}];});
+try{var _sv=sessionStorage.getItem("pf4");if(_sv){var _p=JSON.parse(_sv);scores=_p.scores;if(_p.mode)activeMode=_p.mode;if(_p.manual)MANUAL_ROUNDS=_p.manual;}}catch(e){}
+function save(){try{sessionStorage.setItem("pf4",JSON.stringify({scores:scores,mode:activeMode,manual:MANUAL_ROUNDS}));}catch(e){}}
+function toggleWinner(ri,ci,w){scores[ri][ci].winner=scores[ri][ci].winner===w?0:w;save();render();}
 function updateScore(ri,ci,side,val){
-  if(side==='a')scores[ri][ci].sa=val; else scores[ri][ci].sb=val;
+  if(side==="a")scores[ri][ci].sa=val;else scores[ri][ci].sb=val;
   var sa=parseInt(scores[ri][ci].sa),sb=parseInt(scores[ri][ci].sb);
-  if(!isNaN(sa)&&!isNaN(sb)&&sa!==sb) scores[ri][ci].winner=sa>sb?1:2;
+  if(!isNaN(sa)&&!isNaN(sb)&&sa!==sb)scores[ri][ci].winner=sa>sb?1:2;
   save();renderRanking();renderCruces();
 }
-
-function done(){
-  var n=0;
-  scores.forEach(function(r){r.forEach(function(c){if(c.winner!==0)n++;});});
-  return n;
-}
-
+function done(){var n=0;scores.forEach(function(r){r.forEach(function(c){if(c.winner!==0)n++;});});return n;}
 function ranking(){
-  var rounds=getRounds();
-  var st={};
+  var rounds=getRounds(),st={};
   PLAYERS.forEach(function(p){st[p]={wins:0,played:0,rests:0,gf:0,gc:0};});
   rounds.forEach(function(round,ri){
     if(round.r1)st[round.r1].rests++;
@@ -194,278 +143,207 @@ function ranking(){
     [[round.c1a,round.c1b,0],[round.c2a,round.c2b,1]].forEach(function(x){
       var tA=x[0],tB=x[1],ci=x[2],sc=scores[ri][ci];
       var res=sc.winner,sa=parseInt(sc.sa)||0,sb=parseInt(sc.sb)||0;
-      if(res!==0){
-        tA.forEach(function(p){st[p].played++;st[p].gf+=sa;st[p].gc+=sb;});
-        tB.forEach(function(p){st[p].played++;st[p].gf+=sb;st[p].gc+=sa;});
-      }
+      if(res!==0){tA.forEach(function(p){st[p].played++;st[p].gf+=sa;st[p].gc+=sb;});tB.forEach(function(p){st[p].played++;st[p].gf+=sb;st[p].gc+=sa;});}
       if(res===1)tA.forEach(function(p){st[p].wins++;});
       if(res===2)tB.forEach(function(p){st[p].wins++;});
     });
   });
-  return PLAYERS.map(function(p){
-    var s=st[p];
-    return {name:p,wins:s.wins,played:s.played,rests:s.rests,gf:s.gf,gc:s.gc,diff:s.gf-s.gc};
-  }).sort(function(a,b){return b.wins-a.wins||b.diff-a.diff||b.gf-a.gf;});
+  return PLAYERS.map(function(p){var s=st[p];return {name:p,wins:s.wins,played:s.played,rests:s.rests,gf:s.gf,gc:s.gc,diff:s.gf-s.gc};})
+    .sort(function(a,b){return b.wins-a.wins||b.diff-a.diff||b.gf-a.gf;});
 }
-
-/* ---- FIXTURE ---- */
 function renderFixture(){
   var d=done(),pct=Math.round(d/10*100);
   var rounds=getRounds();
-  var modeBadge='<span style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;margin-left:6px;'+(activeMode==='random'?'background:#D6E8FA;color:#2E75B6':'background:#D5F0E0;color:#276836')+'">'+
-    (activeMode==='random'?'🎲 Random':'✏️ Manual')+'</span>';
-  var h='<div class="prog-wrap"><div class="prog-lbl"><span>Partidos jugados '+modeBadge+'</span><span>'+d+' / 10</span></div>'
+  var modeTag="["+( activeMode==="random"?"Random":"Manual")+"]";
+  var h='<div class="prog-wrap"><div class="prog-lbl"><span>Partidos jugados '+modeTag+'</span><span>'+d+' / 10</span></div>'
     +'<div class="prog-bar"><div class="prog-fill" style="width:'+pct+'%"></div></div></div>';
   rounds.forEach(function(round,ri){
     h+='<div class="card">'
       +'<div class="rhdr"><span class="rnum">Ronda '+(ri+1)+'</span>'
       +'<span class="rtime">'+TIMES[ri]+'</span>'
-      +'<span class="rbadge">💤 '+(round.r1||'?')+' / '+(round.r2||'?')+'</span></div>'
+      +'<span class="rbadge">Desc: '+(round.r1||"?")+" / "+(round.r2||"?")+'</span></div>'
       +makeCourt(ri,0,round.c1a,round.c1b,false)
       +makeCourt(ri,1,round.c2a,round.c2b,true)
-      +'</div>';
+      +"</div>";
   });
-  h+='<button class="reset-btn" onclick="resetAll()">🔄 Reiniciar resultados</button>';
-  document.getElementById('pg-fixture').innerHTML=h;
+  h+='<button class="reset-btn" onclick="resetAll()">Reiniciar resultados</button>';
+  document.getElementById("pg-fixture").innerHTML=h;
 }
-
 function makeCourt(ri,ci,tA,tB,green){
   var sc=scores[ri][ci],res=sc.winner;
   var aW=res===1,bW=res===2,col=green?"g":"b";
-  return '<div class="court'+(ci===0?" sep":"")+'">'
-    +'<div class="clbl '+col+'">Cancha '+(ci+1)+'</div>'
+  var aClass="team"+(aW?" w"+col:"");
+  var bClass="team"+(bW?" w"+col:"");
+  var aBtnClass="sbtn"+(aW?" a"+col:"");
+  var bBtnClass="sbtn"+(bW?" a"+col:"");
+  var stxt=res===0?"vs":res===1?"A gana":"B gana";
+  var aWinBadge=aW?'<span class="wbadge '+col+'">Gano</span>':"";
+  var bWinBadge=bW?'<span class="wbadge '+col+'">Gano</span>':"";
+  return '<div class="court'+(ci===0?" sep":"")+'"><div class="clbl '+col+'">Cancha '+(ci+1)+'</div>'
     +'<div class="mrow">'
-    +'<div class="team'+(aW?" w"+col)+'">'+tA[0]+'<br>'+tA[1]+(aW?'<span class="wbadge '+col+'">✓ Ganó</span>':'')+'</div>'
+    +'<div class="'+aClass+'">'+tA[0]+'<br>'+tA[1]+aWinBadge+'</div>'
     +'<div class="sarea">'
-    +'<button class="sbtn'+(aW?" a"+col)+'" onclick="toggleWinner('+ri+','+ci+',1)">◀</button>'
-    +'<span class="stxt">'+(res===0?"vs":res===1?"✓–":"–✓")+'</span>'
-    +'<button class="sbtn'+(bW?" a"+col)+'" onclick="toggleWinner('+ri+','+ci+',2)">▶</button>'
+    +'<button class="'+aBtnClass+'" onclick="toggleWinner('+ri+','+ci+',1)">A</button>'
+    +'<span class="stxt">'+stxt+'</span>'
+    +'<button class="'+bBtnClass+'" onclick="toggleWinner('+ri+','+ci+',2)">B</button>'
     +'</div>'
-    +'<div class="team'+(bW?" w"+col)+'">'+tB[0]+'<br>'+tB[1]+(bW?'<span class="wbadge '+col+'">✓ Ganó</span>':'')+'</div>'
+    +'<div class="'+bClass+'">'+tB[0]+'<br>'+tB[1]+bWinBadge+'</div>'
     +'</div>'
     +'<div class="score-row">'
     +'<div class="score-lbl">'+tA[0]+' / '+tA[1]+'</div>'
-    +'<input class="score-inp" type="number" min="0" max="99" inputmode="numeric" placeholder="–" value="'+sc.sa+'" onchange="updateScore('+ri+','+ci+',\'a\',this.value)" oninput="updateScore('+ri+','+ci+',\'a\',this.value)">'
-    +'<span class="score-dash">–</span>'
-    +'<input class="score-inp" type="number" min="0" max="99" inputmode="numeric" placeholder="–" value="'+sc.sb+'" onchange="updateScore('+ri+','+ci+',\'b\',this.value)" oninput="updateScore('+ri+','+ci+',\'b\',this.value)">'
+    +'<input class="score-inp" type="number" min="0" max="99" inputmode="numeric" placeholder="-" value="'+sc.sa+'" onchange="updateScore('+ri+','+ci+',"a",this.value)" oninput="updateScore('+ri+','+ci+',"a",this.value)">'
+    +'<span class="score-dash">-</span>'
+    +'<input class="score-inp" type="number" min="0" max="99" inputmode="numeric" placeholder="-" value="'+sc.sb+'" onchange="updateScore('+ri+','+ci+',"b",this.value)" oninput="updateScore('+ri+','+ci+',"b",this.value)">'
     +'<div class="score-lbl">'+tB[0]+' / '+tB[1]+'</div>'
     +'</div></div>';
 }
-
-/* ---- RANKING ---- */
 function renderRanking(){
-  var d=done(),el=document.getElementById('pg-ranking');
-  if(d===0){el.innerHTML='<div class="empty"><div class="ico">🏆</div><p>Cargá los resultados en <strong>Fixture</strong><br>para ver el ranking en tiempo real.</p></div>';return;}
+  var d=done(),el=document.getElementById("pg-ranking");
+  if(d===0){el.innerHTML='<div class="empty"><div class="ico">&#127942;</div><p>Carga resultados en <strong>Fixture</strong><br>para ver el ranking.</p></div>';return;}
   var rank=ranking(),maxW=rank.reduce(function(m,r){return Math.max(m,r.wins);},1);
-  var h='';
-  if(d===10){h+='<div class="champ"><div style="font-size:44px">🏆</div><div style="font-size:13px;font-weight:700;color:#7A4800">¡Campeona del torneo!</div><div style="font-size:26px;font-weight:800;color:#1A2733">'+rank[0].name+'</div><div style="font-size:12px;color:#7A4800;margin-top:3px">'+rank[0].wins+' victorias</div></div>';}
-  h+='<div class="rank-card"><div class="rank-hdr">🏆 Ranking — '+d+' partido'+(d!==1?'s':'')+' jugado'+(d!==1?'s':'')+'</div>';
+  var h="";
+  if(d===10){h+='<div class="champ"><div style="font-size:44px">&#127942;</div><div style="font-size:13px;font-weight:700;color:#7A4800">Campeona del torneo!</div><div style="font-size:26px;font-weight:800;color:#1A2733">'+rank[0].name+'</div><div style="font-size:12px;color:#7A4800;margin-top:3px">'+rank[0].wins+' victorias</div></div>';}
+  h+='<div class="rank-card"><div class="rank-hdr">Ranking - '+d+' partido'+(d!==1?"s":"")+'</div>';
   rank.forEach(function(p,i){
     var bc=i===0?"b1":i===1?"b2":i===2?"b3":"bx";
     var pct=Math.round(p.wins/maxW*100);
     var losses=p.played-p.wins;
-    var diffStr=p.diff>0?'+'+p.diff:''+p.diff;
+    var diffStr=(p.diff>0?"+":"")+p.diff;
     h+='<div class="rank-row">'
       +'<div class="bubble '+bc+'">'+(i+1)+'</div>'
       +'<div class="rinfo"><div class="rname">'+p.name+'</div>'
-      +'<div class="rsub">'+POS[p.name]+' · '+p.rests+' desc.</div>'
+      +'<div class="rsub">'+POS[p.name]+' - '+p.rests+' desc.</div>'
       +'<div style="display:flex;gap:5px;margin-top:5px;flex-wrap:wrap">'
-      +'<span style="font-size:10px;font-weight:700;background:#D5F0E0;color:#276836;padding:2px 7px;border-radius:8px">✓ '+p.wins+' gan.</span>'
-      +'<span style="font-size:10px;font-weight:700;background:#FDECEA;color:#C0392B;padding:2px 7px;border-radius:8px">✗ '+losses+' perd.</span>'
-      +(p.played>0?'<span style="font-size:10px;font-weight:700;background:#EBF3FB;color:#2E75B6;padding:2px 7px;border-radius:8px">'+p.gf+':'+p.gc+' ('+diffStr+')</span>':'')
+      +'<span style="font-size:10px;font-weight:700;background:#D5F0E0;color:#276836;padding:2px 7px;border-radius:8px">V: '+p.wins+'</span>'
+      +'<span style="font-size:10px;font-weight:700;background:#FDECEA;color:#C0392B;padding:2px 7px;border-radius:8px">D: '+losses+'</span>'
+      +(p.played>0?'<span style="font-size:10px;font-weight:700;background:#EBF3FB;color:#2E75B6;padding:2px 7px;border-radius:8px">'+p.gf+':'+p.gc+' ('+diffStr+')</span>':"")
       +'</div>'
       +'<div class="rbar"><div class="rbar-fill" style="width:'+pct+'%"></div></div></div>'
-      +'<div class="rwins"><div class="rnum-big">'+p.wins+'</div><div class="rlbl">vic'+(p.wins!==1?'s':'')+'</div></div>'
+      +'<div class="rwins"><div class="rnum-big">'+p.wins+'</div><div class="rlbl">vic'+(p.wins!==1?"s":"")+'</div></div>'
       +'</div>';
   });
-  h+='</div>';
+  h+="</div>";
   el.innerHTML=h;
 }
-
-/* ---- CRUCES ---- */
 function renderCruces(){
   var rounds=getRounds();
-  var h='<div class="info-box">📋 <strong>5 rondas · 4 partidos por jugadora · Todas descansan 1 vez</strong><br>Modo activo: '+(activeMode==='random'?'🎲 Parejas random':'✏️ Parejas manuales')+'</div>';
-  h+='<div class="cruces-card"><div class="cruces-hdr">📅 Programa de partidos</div>';
+  var h='<div class="info-box">5 rondas - 4 partidos por jugadora - Todas descansan 1 vez - Modo: '+(activeMode==="random"?"Random":"Manual")+'</div>';
+  h+='<div class="cruces-card"><div class="cruces-hdr">Programa de partidos</div>';
   rounds.forEach(function(round,ri){
     var sc1=scores[ri][0],sc2=scores[ri][1];
-    var r1txt=sc1.winner===0?'':(sc1.sa&&sc1.sb?sc1.sa+' – '+sc1.sb:'');
-    var r2txt=sc2.winner===0?'':(sc2.sa&&sc2.sb?sc2.sa+' – '+sc2.sb:'');
-    h+='<div class="cruce-row">'
-      +'<div class="cruce-round">Ronda '+(ri+1)+' · '+TIMES[ri]+'</div>'
+    var r1txt=(sc1.sa&&sc1.sb)?sc1.sa+"-"+sc1.sb:"";
+    var r2txt=(sc2.sa&&sc2.sb)?sc2.sa+"-"+sc2.sb:"";
+    h+='<div class="cruce-row"><div class="cruce-round">Ronda '+(ri+1)+' - '+TIMES[ri]+'</div>'
       +'<div class="cruce-match"><span class="cruce-court b">C1</span>'
-      +'<span class="cruce-teams">'+round.c1a[0]+' / '+round.c1a[1]+' <span style="color:#aaa">vs</span> '+round.c1b[0]+' / '+round.c1b[1]+'</span>'
-      +(r1txt?'<span class="cruce-result b">'+r1txt+'</span>':'')+'</div>'
+      +'<span class="cruce-teams">'+round.c1a[0]+'/'+round.c1a[1]+' vs '+round.c1b[0]+'/'+round.c1b[1]+'</span>'
+      +(r1txt?'<span class="cruce-result b">'+r1txt+'</span>':"")+'</div>'
       +'<div class="cruce-match"><span class="cruce-court g">C2</span>'
-      +'<span class="cruce-teams">'+round.c2a[0]+' / '+round.c2a[1]+' <span style="color:#aaa">vs</span> '+round.c2b[0]+' / '+round.c2b[1]+'</span>'
-      +(r2txt?'<span class="cruce-result g">'+r2txt+'</span>':'')+'</div>'
-      +'<span class="cruce-rest">💤 '+(round.r1||'?')+' / '+(round.r2||'?')+'</span>'
+      +'<span class="cruce-teams">'+round.c2a[0]+'/'+round.c2a[1]+' vs '+round.c2b[0]+'/'+round.c2b[1]+'</span>'
+      +(r2txt?'<span class="cruce-result g">'+r2txt+'</span>':"")+'</div>'
+      +'<span class="cruce-rest">Desc: '+(round.r1||"?")+' / '+(round.r2||"?")+'</span>'
       +'</div>';
   });
-  h+='</div>';
-  h+='<div class="cruces-card"><div class="cruces-hdr">👥 Jugadoras</div>';
+  h+="</div>";
+  h+='<div class="cruces-card"><div class="cruces-hdr">Jugadoras</div>';
   var pc={};PLAYERS.forEach(function(p){pc[p]=0;});
   rounds.forEach(function(r){[r.c1a,r.c1b,r.c2a,r.c2b].forEach(function(t){t.forEach(function(p){if(pc[p]!==undefined)pc[p]++;});});});
   PLAYERS.forEach(function(p,i){
-    var rests=5-pc[p];
-    h+='<div style="display:flex;align-items:center;padding:9px 14px;border-bottom:'+(i<PLAYERS.length-1?'1px solid #EEF2F7':'none')+'">'
+    h+='<div style="display:flex;align-items:center;padding:9px 14px;border-bottom:'+(i<PLAYERS.length-1?"1px solid #EEF2F7":"none")+'">'
       +'<div style="width:22px;height:22px;border-radius:50%;background:#E8EDF2;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#6B7A8D;flex-shrink:0">'+(i+1)+'</div>'
       +'<div style="flex:1;margin-left:10px"><div style="font-size:14px;font-weight:600">'+p+'</div>'
-      +'<div style="font-size:10px;color:#6B7A8D">'+POS[p]+' · '+pc[p]+' partidos · '+rests+' descanso'+(rests!==1?'s':'')+'</div></div>'
+      +'<div style="font-size:10px;color:#6B7A8D">'+POS[p]+' - '+pc[p]+' partidos - '+(5-pc[p])+' descanso'+(5-pc[p]!==1?"s":"")+'</div></div>'
       +'</div>';
   });
-  h+='</div>';
-  document.getElementById('pg-cruces').innerHTML=h;
+  h+="</div>";
+  document.getElementById("pg-cruces").innerHTML=h;
 }
-
-/* ---- PAREJAS ---- */
-var pairsMode='random'; // local toggle within parejas tab
-
+var pairsMode="random";
 function renderParejas(){
   var h='<div class="mode-toggle">'
-    +'<button class="mode-btn'+(pairsMode==='random'?' on':'')+'" onclick="setPairsMode(\'random\')">🎲 Random</button>'
-    +'<button class="mode-btn'+(pairsMode==='manual'?' on':'')+'" onclick="setPairsMode(\'manual\')">✏️ Manual</button>'
+    +'<button class="mode-btn'+(pairsMode==="random"?" on":"")+"\" onclick=\"setPairsMode('random')\">Random</button>"
+    +'<button class="mode-btn'+(pairsMode==="manual"?" on":"")+"\" onclick=\"setPairsMode('manual')\">Manual</button>"
     +'</div>';
-
-  if(pairsMode==='random'){
-    h+='<div class="ok-box">✅ <strong>Fixture generado automáticamente</strong> con el algoritmo óptimo: 5 rondas, todas juegan 4 partidos, todas descansan 1 vez, sin parejas repetidas.</div>';
-    h+='<div class="section-card"><div class="section-hdr">📋 Parejas del fixture random</div>';
+  if(pairsMode==="random"){
+    h+='<div class="ok-box">Fixture generado automaticamente: 5 rondas, todas juegan 4 partidos, todas descansan 1 vez, sin parejas repetidas.</div>';
+    h+='<div class="section-card"><div class="section-hdr">Parejas del fixture</div>';
     RANDOM_ROUNDS.forEach(function(r,i){
-      h+='<div style="padding:10px 14px;border-bottom:'+(i<4?'1px solid #EEF2F7':'none')+'">'
-        +'<div style="font-size:10px;font-weight:700;text-transform:uppercase;color:#6B7A8D;margin-bottom:6px">Ronda '+(i+1)+' · '+TIMES[i]+'</div>'
-        +'<div style="font-size:12px;margin-bottom:3px"><span style="font-size:9px;font-weight:700;background:#D6E8FA;color:#2E75B6;padding:1px 5px;border-radius:6px;margin-right:5px">C1</span>'
-        +r.c1a[0]+' / '+r.c1a[1]+' <span style="color:#aaa">vs</span> '+r.c1b[0]+' / '+r.c1b[1]+'</div>'
-        +'<div style="font-size:12px;margin-bottom:4px"><span style="font-size:9px;font-weight:700;background:#D5F0E0;color:#276836;padding:1px 5px;border-radius:6px;margin-right:5px">C2</span>'
-        +r.c2a[0]+' / '+r.c2a[1]+' <span style="color:#aaa">vs</span> '+r.c2b[0]+' / '+r.c2b[1]+'</div>'
-        +'<span style="font-size:10px;color:#8B5E00;background:#FFF2CC;padding:2px 7px;border-radius:10px">💤 '+r.r1+' / '+r.r2+'</span>'
+      h+='<div style="padding:10px 14px;border-bottom:'+(i<4?"1px solid #EEF2F7":"none")+'">'
+        +'<div style="font-size:10px;font-weight:700;text-transform:uppercase;color:#6B7A8D;margin-bottom:6px">Ronda '+(i+1)+' - '+TIMES[i]+'</div>'
+        +'<div style="font-size:12px;margin-bottom:3px"><span style="font-size:9px;font-weight:700;background:#D6E8FA;color:#2E75B6;padding:1px 5px;border-radius:6px;margin-right:5px">C1</span>'+r.c1a[0]+'/'+r.c1a[1]+' vs '+r.c1b[0]+'/'+r.c1b[1]+'</div>'
+        +'<div style="font-size:12px;margin-bottom:4px"><span style="font-size:9px;font-weight:700;background:#D5F0E0;color:#276836;padding:1px 5px;border-radius:6px;margin-right:5px">C2</span>'+r.c2a[0]+'/'+r.c2a[1]+' vs '+r.c2b[0]+'/'+r.c2b[1]+'</div>'
+        +'<span style="font-size:10px;color:#8B5E00;background:#FFF2CC;padding:2px 7px;border-radius:10px">Desc: '+r.r1+' / '+r.r2+'</span>'
         +'</div>';
     });
-    h+='</div>';
-    if(activeMode!=='random'){
-      h+='<button class="apply-btn" onclick="applyMode(\'random\')">✅ Usar este fixture en Fixture/Ranking</button>';
-    } else {
-      h+='<div class="ok-box" style="margin-top:4px">✅ Este es el modo activo en Fixture y Ranking.</div>';
+    h+="</div>";
+    if(activeMode!=="random"){
+      h+='<button class="apply-btn" onclick="applyMode(\'random\')">Usar este fixture</button>';
+    }else{
+      h+='<div class="ok-box" style="margin-top:4px">Este es el modo activo.</div>';
     }
-  } else {
-    // MANUAL mode
-    h+='<div class="warn-box">✏️ <strong>Armá las parejas manualmente.</strong> Seleccioná las 4 jugadoras de cada cancha y las 2 que descansan por ronda. Al terminar tocá "Aplicar".</div>';
-    h+='<div class="section-card"><div class="section-hdr">✏️ Configurar parejas</div>';
+  }else{
+    h+='<div class="warn-box">Selecciona las jugadoras de cada cancha y las que descansan. Toca Aplicar cuando termines.</div>';
+    h+='<div class="section-card"><div class="section-hdr">Configurar parejas</div>';
     for(var ri=0;ri<5;ri++){
       var mr=MANUAL_ROUNDS[ri];
-      h+='<div class="manual-round">'
-        +'<div class="manual-round-title">Ronda '+(ri+1)+' · '+TIMES[ri]+'</div>'
-        // Cancha 1
-        +'<div class="pair-court-block">'
-        +'<div class="manual-court-label b">🔵 Cancha 1</div>'
-        +'<div class="pair-row">'
-        +makePlayerSel('c1a0',ri,0,'c1a',mr.c1a[0])
-        +makePlayerSel('c1a1',ri,1,'c1a',mr.c1a[1])
-        +'</div>'
-        +'<div style="text-align:center;font-size:10px;font-weight:700;color:#aaa;margin:2px 0">vs</div>'
-        +'<div class="pair-row">'
-        +makePlayerSel('c1b0',ri,0,'c1b',mr.c1b[0])
-        +makePlayerSel('c1b1',ri,1,'c1b',mr.c1b[1])
-        +'</div></div>'
-        // Cancha 2
-        +'<div class="pair-court-block">'
-        +'<div class="manual-court-label g">🟢 Cancha 2</div>'
-        +'<div class="pair-row">'
-        +makePlayerSel('c2a0',ri,0,'c2a',mr.c2a[0])
-        +makePlayerSel('c2a1',ri,1,'c2a',mr.c2a[1])
-        +'</div>'
-        +'<div style="text-align:center;font-size:10px;font-weight:700;color:#aaa;margin:2px 0">vs</div>'
-        +'<div class="pair-row">'
-        +makePlayerSel('c2b0',ri,0,'c2b',mr.c2b[0])
-        +makePlayerSel('c2b1',ri,1,'c2b',mr.c2b[1])
-        +'</div></div>'
-        // Descansan
-        +'<div class="rest-sel-row">'
-        +'<span style="font-size:10px;font-weight:700;color:#8B5E00;margin-right:4px;align-self:center">💤</span>'
-        +makeRestSel(ri,0,mr.r1)
-        +makeRestSel(ri,1,mr.r2)
-        +'</div>'
-        +'</div>';
+      h+='<div class="manual-round"><div class="manual-round-title">Ronda '+(ri+1)+' - '+TIMES[ri]+'</div>'
+        +'<div class="pair-court-block"><div class="manual-court-label b">Cancha 1</div>'
+        +'<div class="pair-row">'+mkSel(ri,"c1a",0,mr.c1a[0])+mkSel(ri,"c1a",1,mr.c1a[1])+'</div>'
+        +'<div style="text-align:center;font-size:10px;color:#aaa;margin:2px 0">vs</div>'
+        +'<div class="pair-row">'+mkSel(ri,"c1b",0,mr.c1b[0])+mkSel(ri,"c1b",1,mr.c1b[1])+'</div></div>'
+        +'<div class="pair-court-block"><div class="manual-court-label g">Cancha 2</div>'
+        +'<div class="pair-row">'+mkSel(ri,"c2a",0,mr.c2a[0])+mkSel(ri,"c2a",1,mr.c2a[1])+'</div>'
+        +'<div style="text-align:center;font-size:10px;color:#aaa;margin:2px 0">vs</div>'
+        +'<div class="pair-row">'+mkSel(ri,"c2b",0,mr.c2b[0])+mkSel(ri,"c2b",1,mr.c2b[1])+'</div></div>'
+        +'<div class="rest-sel-row"><span style="font-size:10px;font-weight:700;color:#8B5E00;margin-right:4px;align-self:center">Desc:</span>'
+        +mkRestSel(ri,0,mr.r1)+mkRestSel(ri,1,mr.r2)+'</div></div>';
     }
-    h+='</div>';
-    h+='<button class="apply-btn" onclick="applyManual()">✅ Aplicar parejas manuales al fixture</button>';
+    h+="</div>";
+    h+='<button class="apply-btn" onclick="applyManual()">Aplicar parejas manuales</button>';
   }
-
-  document.getElementById('pg-parejas').innerHTML=h;
+  document.getElementById("pg-parejas").innerHTML=h;
 }
-
-function makePlayerSel(id,ri,idx,field,selected){
-  var opts='<option value="">–</option>';
-  PLAYERS.forEach(function(p){opts+='<option value="'+p+'"'+(p===selected?' selected':'')+'>'+p+'</option>';});
-  return '<select class="pair-sel" onchange="updateManual('+ri+',\''+field+'\','+idx+',this.value)">'+opts+'</select>';
+function mkSel(ri,field,idx,selected){
+  var opts='<option value="">-</option>';
+  PLAYERS.forEach(function(p){opts+='<option value="'+p+'"'+(p===selected?' selected':"")+'>'+p+'</option>';});
+  return '<select class="pair-sel" onchange="updM('+ri+',"'+field+'",'+idx+',this.value)">'+opts+'</select>';
 }
-
-function makeRestSel(ri,idx,selected){
-  var opts='<option value="">–</option>';
-  PLAYERS.forEach(function(p){opts+='<option value="'+p+'"'+(p===selected?' selected':'')+'>'+p+'</option>';});
-  return '<select class="rest-sel" onchange="updateManualRest('+ri+','+idx+',this.value)">'+opts+'</select>';
+function mkRestSel(ri,idx,selected){
+  var opts='<option value="">-</option>';
+  PLAYERS.forEach(function(p){opts+='<option value="'+p+'"'+(p===selected?' selected':"")+'>'+p+'</option>';});
+  return '<select class="rest-sel" onchange="updR('+ri+','+idx+',this.value)">'+opts+'</select>';
 }
-
-function updateManual(ri,field,idx,val){
-  MANUAL_ROUNDS[ri][field][idx]=val;
-  save();
-}
-
-function updateManualRest(ri,idx,val){
-  if(idx===0)MANUAL_ROUNDS[ri].r1=val;
-  else MANUAL_ROUNDS[ri].r2=val;
-  save();
-}
-
-function setPairsMode(m){
-  pairsMode=m;
-  renderParejas();
-}
-
-function applyMode(m){
-  activeMode=m;
-  save();render();
-  showTab('fixture');
-}
-
+function updM(ri,field,idx,val){MANUAL_ROUNDS[ri][field][idx]=val;save();}
+function updR(ri,idx,val){if(idx===0)MANUAL_ROUNDS[ri].r1=val;else MANUAL_ROUNDS[ri].r2=val;save();}
+function setPairsMode(m){pairsMode=m;renderParejas();}
+function applyMode(m){activeMode=m;save();render();showTab("fixture");}
 function applyManual(){
-  // Validate: check no player appears twice in same round
   var warnings=[];
   MANUAL_ROUNDS.forEach(function(r,i){
     var all=[r.c1a[0],r.c1a[1],r.c1b[0],r.c1b[1],r.c2a[0],r.c2a[1],r.c2b[0],r.c2b[1],r.r1,r.r2];
-    var filled=all.filter(function(p){return p&&p!=='';});
-    var unique=filled.filter(function(p,i){return filled.indexOf(p)===i;});
-    if(filled.length<10)warnings.push('Ronda '+(i+1)+': faltan jugadoras');
-    else if(unique.length<10)warnings.push('Ronda '+(i+1)+': hay jugadoras repetidas');
+    var filled=all.filter(function(p){return p&&p!=="";});
+    var unique=filled.filter(function(p,j){return filled.indexOf(p)===j;});
+    if(filled.length<10)warnings.push("Ronda "+(i+1)+": faltan jugadoras");
+    else if(unique.length<10)warnings.push("Ronda "+(i+1)+": hay jugadoras repetidas");
   });
-  if(warnings.length>0){
-    alert('⚠️ Hay errores:\n'+warnings.join('\n'));
-    return;
-  }
-  activeMode='manual';
-  save();render();
-  showTab('fixture');
+  if(warnings.length>0){alert("Errores:\n"+warnings.join("\n"));return;}
+  activeMode="manual";save();render();showTab("fixture");
 }
-
-/* ---- GLOBAL ---- */
 function render(){renderFixture();renderRanking();renderCruces();renderParejas();}
-
 function showTab(t){
-  ['fixture','ranking','cruces','parejas'].forEach(function(id){
-    document.getElementById('pg-'+id).style.display=t===id?'block':'none';
+  ["fixture","ranking","cruces","parejas"].forEach(function(id){
+    document.getElementById("pg-"+id).style.display=t===id?"block":"none";
   });
-  document.getElementById('t-fix').className='tab'+(t==='fixture'?' on':'');
-  document.getElementById('t-rank').className='tab'+(t==='ranking'?' on':'');
-  document.getElementById('t-cruces').className='tab'+(t==='cruces'?' on':'');
-  document.getElementById('t-par').className='tab'+(t==='parejas'?' on':'');
+  document.getElementById("t-fix").className="tab"+(t==="fixture"?" on":"");
+  document.getElementById("t-rank").className="tab"+(t==="ranking"?" on":"");
+  document.getElementById("t-cruces").className="tab"+(t==="cruces"?" on":"");
+  document.getElementById("t-par").className="tab"+(t==="parejas"?" on":"");
 }
-
 function resetAll(){
-  if(confirm('¿Reiniciar todos los resultados?')){
-    scores=Array(5).fill(null).map(function(){return [{winner:0,sa:'',sb:''},{winner:0,sa:'',sb:''}];});
+  if(confirm("Reiniciar todos los resultados?")){
+    scores=Array(5).fill(null).map(function(){return [{winner:0,sa:"",sb:""},{winner:0,sa:"",sb:""}];});
     save();render();
   }
 }
-
 render();
 </script>
 </body>
