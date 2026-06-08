@@ -2,6 +2,10 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -143,7 +147,7 @@ body{font-family:-apple-system,sans-serif;background:#F0F4F8;color:#1A2733;min-h
   <button class="tab"     id="t-hist" onclick="showTab('historial')">Historial</button>
   <button class="tab"     id="t-set"  onclick="showTab('settings')">Ajustes</button>
 </div>
-<div id="modal-overlay" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);z-index:200;display:none;align-items:flex-end" onclick="closeModal()">
+<div id="modal-overlay" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);z-index:200;align-items:flex-end" onclick="closeModal()">
   <div style="background:#fff;width:100%;border-radius:20px 20px 0 0;padding-bottom:20px;max-height:60vh;overflow-y:auto" onclick="event.stopPropagation()">
     <div style="padding:14px 16px;font-size:15px;font-weight:700;color:#1A3A5C;border-bottom:1px solid #EEF2F7;display:flex;justify-content:space-between;align-items:center">
       <span>Elegir avatar</span>
@@ -161,6 +165,17 @@ body{font-family:-apple-system,sans-serif;background:#F0F4F8;color:#1A2733;min-h
 <div id="pg-settings"  class="pg" style="display:none"></div>
 
 <script>
+
+window.onerror = function(msg, src, line, col, err) {
+  var body = document.body;
+  if(body) {
+    var div = document.createElement('div');
+    div.style.cssText = 'background:#FDECEA;color:#C0392B;padding:12px;font-size:12px;position:fixed;top:0;left:0;right:0;z-index:9999;font-family:monospace';
+    div.textContent = 'Error: ' + msg + ' (line ' + line + ')';
+    body.insertBefore(div, body.firstChild);
+  }
+  return false;
+};
 var EMOJI_CHARS=["&#127914;","&#127955;","&#11088;","&#128293;","&#9889;","&#128081;","&#128142;","&#10084;","&#127804;","&#9728;","&#127769;","&#128640;","&#129409;","&#128049;","&#128047;","&#129418;","&#128060;","&#128040;","&#128067;","&#129417;","&#129419;","&#127797;","&#127826;","&#127827;","&#127825;","&#129389;"];
 var DEF_AVATARS=[0,1,2,3,4,5,6,7,8,9];
 var avatars=DEF_AVATARS.slice();
@@ -989,10 +1004,18 @@ function resetAll(){
 }
 
 // Initialize: generate rounds if none exist
-if(!generatedRounds||generatedRounds.length===0){
-  generatedRounds=generateSchedule(42);
+try {
+  if(!generatedRounds||generatedRounds.length===0){
+    generatedRounds=generateSchedule(42);
+  }
+  render();
+} catch(initErr) {
+  document.body.innerHTML = '<div style="padding:20px;font-family:-apple-system,sans-serif">'
+    + '<h2 style="color:#C0392B;margin-bottom:12px">Error al iniciar</h2>'
+    + '<p style="font-size:13px;color:#555;margin-bottom:8px">' + initErr.message + '</p>'
+    + '<button onclick="localStorage.clear();location.reload()" style="padding:12px 20px;background:#1A3A5C;color:white;border:none;border-radius:10px;font-size:14px;-webkit-appearance:none">Reiniciar app</button>'
+    + '</div>';
 }
-render();
 </script>
 </body>
 </html>
