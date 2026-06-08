@@ -179,7 +179,7 @@ window.onerror = function(msg, src, line, col, err) {
 var EMOJI_CHARS=["&#127914;","&#127955;","&#11088;","&#128293;","&#9889;","&#128081;","&#128142;","&#10084;","&#127804;","&#9728;","&#127769;","&#128640;","&#129409;","&#128049;","&#128047;","&#129418;","&#128060;","&#128040;","&#128067;","&#129417;","&#129419;","&#127797;","&#127826;","&#127827;","&#127825;","&#129389;"];
 var DEF_AVATARS=[0,1,2,3,4,5,6,7,8,9];
 var avatars=DEF_AVATARS.slice();
-var history=[];
+var torneos=[];
 var editingAvatarIdx=-1;
 // ── DEFAULTS ──────────────────────────────────────────────────────────────────
 var DEF_PLAYERS  = ["Caro","Maru","Vale","Ani","Flor","Jime","Ceci","Dani","Maga","Ale"];
@@ -218,7 +218,7 @@ function loadState(){
     if(p.generatedRounds) generatedRounds=p.generatedRounds;
     if(p.manualPairs)     manualPairs=p.manualPairs;
     if(p.scores)          scores=p.scores;
-    if(p.history)         history=p.history;
+    if(p.torneos)         torneos=p.torneos;
   }catch(e){ console.log("loadState err",e); }
 }
 function save(){
@@ -226,7 +226,7 @@ function save(){
     localStorage.setItem("padel_ani_v3", JSON.stringify({
       players:players, positions:positions, avatars:avatars, courts:courts, hours:hours,
       activeMode:activeMode, generatedRounds:generatedRounds,
-      manualPairs:manualPairs, scores:scores, history:history
+      manualPairs:manualPairs, scores:scores, torneos:torneos
     }));
   }catch(e){}
 }
@@ -532,16 +532,16 @@ function saveTournament(){
   var rank=getRanking();
   var now=new Date();
   var dateStr=now.getDate()+"/"+(now.getMonth()+1)+"/"+now.getFullYear();
-  history.unshift({date:dateStr,ranking:rank.map(function(r){return{name:r.name,wins:r.wins,played:r.played};})});
-  if(history.length>20)history=history.slice(0,20);
+  torneos.unshift({date:dateStr,ranking:rank.map(function(r){return{name:r.name,wins:r.wins,played:r.played};})});
+  if(torneos.length>20)torneos=torneos.slice(0,20);
   save();renderHistorial();alert("Torneo guardado!");
 }
 function renderHistorial(){
   var el=document.getElementById("pg-historial");
   if(!el)return;
-  if(history.length===0){el.innerHTML='<div class="empty"><p style="font-size:44px;margin-bottom:12px">&#128214;</p><p>No hay torneos guardados.<br>Cuando termines un torneo, guardalo desde <strong>Ranking</strong>.</p></div>';return;}
-  var h='<div class="section-card"><div class="section-hdr">Torneos ('+history.length+')</div>';
-  history.forEach(function(t){
+  if(torneos.length===0){el.innerHTML='<div class="empty"><p style="font-size:44px;margin-bottom:12px">&#128214;</p><p>No hay torneos guardados.<br>Cuando termines un torneo, guardalo desde <strong>Ranking</strong>.</p></div>';return;}
+  var h='<div class="section-card"><div class="section-hdr">Torneos ('+torneos.length+')</div>';
+  torneos.forEach(function(t){
     h+='<div class="hist-row"><div class="hist-date">'+t.date+'</div><div>';
     t.ranking.slice(0,3).forEach(function(p,pi){
       h+='<span class="hist-badge hist-'+(pi+1)+'">'+(pi+1)+'&#176; '+p.name+' ('+p.wins+'v)</span>';
@@ -551,12 +551,12 @@ function renderHistorial(){
   h+='</div><button class="reset-btn" onclick="clearHistory()">Borrar historial</button>';
   el.innerHTML=h;
 }
-function clearHistory(){if(!confirm("Borrar todo el historial?"))return;history=[];save();renderHistorial();}
+function clearHistory(){if(!confirm("Borrar todo el historial?"))return;torneos=[];save();renderHistorial();}
 function computeCumStats(){
-  if(history.length===0)return[];
+  if(torneos.length===0)return[];
   var stats={};
   players.forEach(function(p,i){stats[p]={idx:i,name:p,wins:0,losses:0,played:0};});
-  history.forEach(function(t){t.ranking.forEach(function(r){if(stats[r.name]){stats[r.name].wins+=r.wins;stats[r.name].played+=r.played;stats[r.name].losses+=(r.played-r.wins);}});});
+  torneos.forEach(function(t){t.ranking.forEach(function(r){if(stats[r.name]){stats[r.name].wins+=r.wins;stats[r.name].played+=r.played;stats[r.name].losses+=(r.played-r.wins);}});});
   return players.map(function(p,i){
     var s=stats[p]||{idx:i,name:p,wins:0,losses:0,played:0};
     s.pct=s.played>0?Math.round(s.wins/s.played*100):0;return s;
