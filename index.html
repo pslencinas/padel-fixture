@@ -563,6 +563,11 @@ function computeCumStats(){
   }).sort(function(a,b){return b.wins-a.wins;});
 }
 
+function posStyle(p){return p==="D"?"background:#D6E8FA;color:#2E75B6":p==="R"?"background:#D5F0E0;color:#276836":"background:#EDE0FF;color:#7B3FA0";}
+function playerTag(idx){
+  var name=players[idx]||"?",p=positions[idx]||"D",lbl=p==="D"?"D":p==="R"?"R":"D+R";
+  return name+'<span style="font-size:9px;font-weight:700;padding:1px 4px;border-radius:5px;margin-left:3px;'+posStyle(p)+'">'+lbl+'</span>';
+}
 function posLabel(idx){
   var p=positions[idx]||"D";
   return p==="D"?"Drive":p==="R"?"Reves":"D+R";
@@ -582,11 +587,11 @@ function renderFixture(){
   var h='<div class="prog-wrap"><div class="prog-lbl"><span>Partidos'+modeTag+'</span><span>'+d+' / '+total+'</span></div>'
     +'<div class="prog-bar"><div class="prog-fill" style="width:'+pct+'%"></div></div></div>';
   rounds.forEach(function(round,ri){
-    var restNames=round.resting.map(function(i){return players[i]||"?";}).join(" / ");
+    var restTags=round.resting.map(function(i){return playerTag(i);});
     h+='<div class="card">'
       +'<div class="rhdr"><span class="rnum">Ronda '+(ri+1)+'</span>'
       +'<span class="rtime">'+tdata.times[ri]+'</span>'
-      +(restNames?'<span class="rbadge">Desc: '+restNames+'</span>':"")
+      +(restTags.length?'<span class="rbadge">Desc: '+round.resting.map(function(i){return players[i]||"?";}).join(" / ")+'</span>':"")
       +'</div>';
     round.courts.forEach(function(court,ci){
       h+=makeCourt(ri,ci,court[0],court[1],ci);
@@ -609,8 +614,8 @@ function makeCourt(ri,ci,tAIdx,tBIdx,courtNum){
   var aBtnClass="sbtn"+(aW?" a"+col:"");
   var bBtnClass="sbtn"+(bW?" a"+col:"");
   var stxt=res===0?"vs":res===1?"A":"B";
-  var tANames=tAIdx.map(function(i){return players[i]||"?";});
-  var tBNames=tBIdx.map(function(i){return players[i]||"?";});
+  var tANames=tAIdx.map(function(i){return getAvatar(i)+" "+(players[i]||"?");});
+  var tBNames=tBIdx.map(function(i){return getAvatar(i)+" "+(players[i]||"?");});
   var aW2=aW?'<span class="wbadge '+col+'">Gano</span>':"";
   var bW2=bW?'<span class="wbadge '+col+'">Gano</span>':"";
   var oca="updateScore("+ri+","+ci+",0,this.value)";
@@ -699,19 +704,19 @@ function renderCruces(){
   var h='<div class="cruces-card"><div class="cruces-hdr">Programa de partidos</div>';
   rounds.forEach(function(round,ri){
     var sc=(scores[ri])||[];
-    var restNames=round.resting.map(function(i){return players[i]||"?";}).join(" / ");
+    var restTags=round.resting.map(function(i){return playerTag(i);});
     h+='<div class="cruce-row"><div class="cruce-round">Ronda '+(ri+1)+' - '+tdata.times[ri]+'</div>';
     round.courts.forEach(function(court,ci){
       var s=(sc[ci])||{sa:"",sb:""};
       var rtxt=(s.sa&&s.sb)?s.sa+"-"+s.sb:"";
       var col=cols[ci%3];
-      var tAN=court[0].map(function(i){return players[i]||"?";});
-      var tBN=court[1].map(function(i){return players[i]||"?";});
+      var tATags=court[0].map(function(i){return playerTag(i);});
+      var tBTags=court[1].map(function(i){return playerTag(i);});
       h+='<div class="cruce-match"><span class="cruce-court '+col+'">C'+(ci+1)+'</span>'
-        +'<span class="cruce-teams">'+tAN.join("/")+' vs '+tBN.join("/")+'</span>'
+        +'<span class="cruce-teams">'+tATags.join(" / ")+' <span style="color:#aaa">vs</span> '+tBTags.join(" / ")+'</span>'
         +(rtxt?'<span class="cruce-result '+col+'">'+rtxt+'</span>':"")+'</div>';
     });
-    if(restNames) h+='<span class="cruce-rest">Desc: '+restNames+'</span>';
+    if(restTags.length) h+='<div class="cruce-rest" style="display:flex;flex-wrap:wrap;gap:4px;align-items:center"><span style="font-weight:700;margin-right:2px">Desc:</span>'+restTags.join("&nbsp;&nbsp;")+'</div>';
     h+='</div>';
   });
   h+="</div>";
@@ -1010,7 +1015,8 @@ try {
   }
   render();
 } catch(initErr) {
-  document.body.innerHTML = '<div style="padding:20px;font-family:-apple-system,sans-serif">'
+  var errEl = document.getElementById('pg-fixture');
+  if(errEl) errEl.innerHTML = '<div style="padding:20px;font-family:-apple-system,sans-serif">'
     + '<h2 style="color:#C0392B;margin-bottom:12px">Error al iniciar</h2>'
     + '<p style="font-size:13px;color:#555;margin-bottom:8px">' + initErr.message + '</p>'
     + '<button onclick="localStorage.clear();location.reload()" style="padding:12px 20px;background:#1A3A5C;color:white;border:none;border-radius:10px;font-size:14px;-webkit-appearance:none">Reiniciar app</button>'
